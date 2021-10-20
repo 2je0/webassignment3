@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    <section id="loginpage" >
+    <section id="loginpage" style="display: none;">
         <div class="loginpage-container">
             <div class="loginpage-head">
                 SKKU ATM
@@ -69,8 +69,8 @@
             <div class="welcomepage-head">
                 WELCOME TO SKKU BANK
             </div>
-            <div class="welcomepage-content">Account Information</div>
-            <div class="welcomepage-content">Withdraw Funds</div>
+            <div class="welcomepage-content" onclick="transWelcomeToInfo()">Account Information</div>
+            <div class="welcomepage-content" onclick="transWelcomeToWithdraw();">Withdraw Funds</div>
             <div class="welcomepage-content">Deposit Funds</div>
             <div class="welcomepage-content">Transfer</div>
         </div>
@@ -81,20 +81,108 @@
         </div>
     </section>
 
-    <section id="informationpage" >
-        <table class="table table-striped info-table" id="informationTableId">
-            <tbody class="info-table">
-                <tr>
-                    <td style="width: 50%;">Date</td>
-                    <td>Funds Out</td>
-                    <td>Funds In</td>
-                    <td style="width: 30%;">Running Balance</td>
-                </tr>
-            </tbody>
-
-        </table>
-        <input type="button" value="+" onclick="addRow();">
+    <section id="informationpage" style="display: none;">
+        <div class="information-container">
+            <div class="informationpage-head">
+                Account Information
+            </div>
+            <div class="information-text">
+                Current Balance: $ <span id="balanceId"></span>
+            </div>
+            <table class="table table-striped info-table" id="informationTableId">
+                <tbody class="info-table">
+                    <tr>
+                        <td style="width: 50%;">Date</td>
+                        <td>Funds Out</td>
+                        <td>Funds In</td>
+                        <td style="width: 30%;">Running Balance</td>
+                    </tr>
+                </tbody>
+            
+            </table>
+            <input type="button" value="+" onclick="addRow();">
+            <div class="information-back" onclick="transInfoToWelcome()">
+                Back
+            </div>
+        </div>
+        
     </section>
+
+    <section id="withdrawpage" style="display: none;">
+        <div class="withdrawpage-container">
+            <div class="withdrawpage-head">
+                Enter the amount to withdraw
+            </div>
+            <div class="withdrawpage-quicklink-container">
+                <div class="withdrawpage-quicklink-text">Quick Links</div>
+                <div class="withdrawpage-quicklink-text">Quick Links</div>
+            </div>
+            <div class="withdrawpage-button-container">
+                <div class="withdrawpage-button-box">
+                    <div class="withdrawpage-button-square" style="margin-top: 5px;" onclick="withdrawUpdate(20)">20</div>
+                    <div class="withdrawpage-button-square" onclick="withdrawUpdate(40)">40</div>
+                    <div class="withdrawpage-button-square" onclick="withdrawUpdate(60)">60</div>
+                    <div class="withdrawpage-button-square" onclick="withdrawUpdate(80)">80</div>
+                </div>
+                <div class="withdrawpage-button-box" style="width: 400px;"></div>
+                <div class="withdrawpage-button-box" id="withdrawArrowId">
+                    <div><img src="assets/uparrow100copy.png" onmouseout="this.src='assets/uparrow100copy.png'" onmouseover="this.src='assets/uparrow100copyhover.png'" alt="" class="withdrawpage-button-arrow" onclick="withdrawPlus(100)"></div>
+                    <div><img src="assets/uparrow20copy.png" onmouseout="this.src='assets/uparrow20copy.png'" onmouseover="this.src='assets/uparrow20copyhover.png'" alt="" class="withdrawpage-button-arrow" onclick="withdrawPlus(20)"></div>
+                    <input type="text" value="0" class="withdrawpage-button-input" id="withdrawInputId">
+                    <div><img src="assets/downarrow20copy.png" onmouseout="this.src='assets/downarrow20copy.png'" onmouseover="this.src='assets/downarrow20copyhover.png'" alt="" class="withdrawpage-button-arrow" onclick="withdrawPlus(-20)"></div>
+                    <div><img src="assets/downarrow100copy.png" onmouseout="this.src='assets/downarrow100copy.png'" alt="" onmouseover="this.src='assets/downarrow100copyhover.png'" class="withdrawpage-button-arrow" onclick="withdrawPlus(-100)"></div>
+                </div>
+                <div class="withdrawpage-button-box" style="justify-content: center; width: 400px; padding-right: 200px;">
+                    <div class="withdrawpage-button-square withdrawpage-button-enter" onclick="transWithdrawToWithdrawquestion();">Enter</div>
+                </div>
+                <div class="withdrawpage-button-box">
+                    <div class="withdrawpage-button-square" style="margin-top: 5px;" onclick="withdrawUpdate(100)">100</div>
+                    <div class="withdrawpage-button-square" onclick="withdrawUpdate(200)">200</div>
+                    <div class="withdrawpage-button-square" onclick="withdrawUpdate(300)">300</div>
+                    <div class="withdrawpage-button-square withdrawpage-button-back" onclick="transWithdrawToWelcome();">Back</div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="withdrawquestionpage" style="display: none;">
+        <div class="withdraw-questionpage-container">
+            <div class="withdraw-questionpage-head">Withdraw</div>
+            <div class="withdraw-questionpage-balance">$ <span id="withdrawValueId"></span>?</div>
+            <div class="withdraw-questionpage-button-container">
+                <div class="welcomepage-content withdrawpage-button-enter withdraw-questionpage-btn">YES</div>
+                <div class="welcomepage-content withdrawpage-button-back withdraw-questionpage-btn" onclick="transWithdrawquestionToWithdraw();">NO</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="depositpage">
+        <div class="loginpage-container">
+            <div class="loginpage-text">
+                Enter the amount to deposit
+            </div>
+            <input type="text" value="" placeholder="$0000.00" class="loginpage-box" >
+            <div class="loginpage-keypad">
+                <div class="loginpage-keypad-inner" onclick="passwordClick('1');">1</div>
+                <div class="loginpage-keypad-inner" onclick="passwordClick('2');">2</div>
+                <div class="loginpage-keypad-inner" onclick="passwordClick('3');">3</div>
+                <div class="loginpage-keypad-inner" onclick="passwordClick('4');">4</div>
+                <div class="loginpage-keypad-inner" onclick="passwordClick('5');">5</div>
+                <div class="loginpage-keypad-inner" onclick="passwordClick('6');">6</div>
+                <div class="loginpage-keypad-inner" onclick="passwordClick('7');">7</div>
+                <div class="loginpage-keypad-inner" onclick="passwordClick('8');">8</div>
+                <div class="loginpage-keypad-inner" onclick="passwordClick('9');">9</div>
+                <div class="loginpage-keypad-inner" onclick="passwordClick('E');" style="font-size: 1.5rem; "> <span
+                        style="color: green;">Enter</span> </div>
+                <div class="loginpage-keypad-inner" onclick="passwordClick('0');">0</div>
+                <div class="loginpage-keypad-inner" onclick="passwordClick('D');" style="font-size: 1.5rem; "><span
+                        style="color: red;">Delete</span></div>
+            </div>
+        
+        </div>
+    </section>
+
 
     <script src="index.js"></script>
 </body>

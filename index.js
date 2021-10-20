@@ -38,6 +38,7 @@ function passwordClick(num){
     
 }
 // loginpageFunction
+
 function transLoginToPin(){
     loginPageLayer.style.display = 'none';
     pinPageLayer.style.display = 'block';
@@ -48,13 +49,14 @@ function transPinToLogin(){
     pinPageLayer.style.display = 'none';
 }
 // pinpageFunction
+
 let pinNumber = ["123"];
 let pinTry = 5;
 let pinPagePassword = document.getElementById('pinPagePasswordId');
 function pinClick(num){
     if(num =='E'){
         if(pinNumber.includes(pinPagePassword.value)){
-            alert('exist!');
+            transPinToWelcome();
         }
         else{
             pinTry--;
@@ -75,10 +77,19 @@ function pinClick(num){
     }
     
 }
+
+function transPinToWelcome() {
+    pinPageLayer.style.display = 'none';
+    welcomePageLayer.style.display = 'block';
+}
 // pinpageFunction
 
 // welcomepageFunction
-
+let welcomePageLayer = document.getElementById('welcomepage');
+function transWelcomeToInfo() {
+    welcomePageLayer.style.display = 'none';
+    informationPageLayer.style.display = 'block';
+}
 // welcomepageFunction
 
 // informationpageFunction
@@ -105,4 +116,53 @@ function addRow(){
     newCell3.innerText = today.toLocaleString('en-US');
     newCell4.innerText = today.toLocaleDateString('en-US');
 }
+let informationPageLayer = document.getElementById('informationpage')
+function transInfoToWelcome() {
+    informationPageLayer.style.display = 'none';
+    welcomePageLayer.style.display = 'block';
+}
 // informationpageFunction
+
+
+//withdrawpageFunction
+let withdrawPageLayer = document.getElementById('withdrawpage')
+
+let withdrawInputVariable = document.getElementById('withdrawInputId');
+let arrowLayer = document.getElementById('withdrawArrowId');
+function withdrawUpdate(num) {
+    withdrawInputVariable.value = num;
+}
+function withdrawPlus(num) {
+    let sum = parseInt(withdrawInputVariable.value) + parseInt(num);
+    if (sum > 300) alert('$300 is the limit to withdraw from the ATM');
+    else if (sum <0) alert('$0 is the limit to withdraw from the ATM');
+    else
+        withdrawInputVariable.value = sum;
+}
+function transWithdrawToWelcome() {
+    withdrawPageLayer.style.display = 'none';
+    welcomePageLayer.style.display = 'block';
+}
+function transWelcomeToWithdraw() {
+    welcomePageLayer.style.display = 'none';
+    withdrawPageLayer.style.display = 'block';
+}
+
+//withdrawpageFunction end
+
+//withdrawQuestionpageFunction start
+let withdrawQuestionSpan = document.getElementById('withdrawValueId');
+let withdrawQuestionPageLayer = document.getElementById('withdrawquestionpage');
+function transWithdrawToWithdrawquestion() {
+    withdrawQuestionSpan.innerHTML = withdrawInputVariable.value;
+    withdrawPageLayer.style.display = 'none';
+    withdrawQuestionPageLayer.style.display = 'block';
+}
+function transWithdrawquestionToWithdraw() {
+    withdrawQuestionPageLayer.style.display = 'none';
+    withdrawPageLayer.style.display = 'block';
+    withdrawInputVariable.value = 0;
+}
+//withdrawQuestionpageFunction end
+
+

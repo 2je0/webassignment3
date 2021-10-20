@@ -1,140 +1,297 @@
-*{
-    box-sizing: border-box;
+* {
+  box-sizing: border-box;
 }
-#loginpage{
-    background-color: #EAF5FF;
-    height: 100vh;
+#loginpage {
+  background-color: #eaf5ff;
+  height: 100vh;
 }
-.loginpage-container{
-    display: flex;
-    align-items: center;
-    flex-direction: column;
+.loginpage-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
-.loginpage-head{
-    font-size: 5rem;
-    font-weight: bold;
-    color: #4BA2EE;
+.loginpage-head {
+  font-size: 5rem;
+  font-weight: bold;
+  color: #4ba2ee;
 }
-.loginpage-text{
-    font-size: 1.5rem;
+.loginpage-text {
+  font-size: 1.5rem;
 }
-.loginpage-box{
-    margin: 20px 0;
-    width: 450px;
-    height: 50px;
-    text-align: center;
-    font-size: 3rem;
+.loginpage-box {
+  margin: 20px 0;
+  width: 450px;
+  height: 50px;
+  text-align: center;
+  font-size: 3rem;
 }
-.loginpage-container input::placeholder{
-    text-align: center;
-    font-size: 2rem;
+.loginpage-container input::placeholder {
+  text-align: center;
+  font-size: 2rem;
 }
-.loginpage-keypad{
-    
-    display: grid;
-    gap: 20px;
-    grid-template-columns:  80px 80px 80px;
-    grid-template-rows: 80px 80px 80px 80px;
-    
+.loginpage-keypad {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: 80px 80px 80px;
+  grid-template-rows: 80px 80px 80px 80px;
 }
-.loginpage-keypad-inner{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 2rem;
-    background-color: #EFEFEF;
-    border-style: solid;
-    border-top-width: thin;
-    border-left-width: thin;
-    /* box-shadow: 2px 2px 0px black; */
+.loginpage-keypad-inner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  background-color: #efefef;
+  border-style: solid;
+  border-top-width: thin;
+  border-left-width: thin;
+  /* box-shadow: 2px 2px 0px black; */
 }
-.loginpage-keypad-inner:hover{
-    cursor: pointer;
-    box-shadow: -2px -2px 0px black;
+.loginpage-keypad-inner:hover {
+  cursor: pointer;
+  box-shadow: -2px -2px 0px black;
 }
 
 /* 1page - login */
 
 /* 2page - pin */
-#pinpage{
-    background-color: #EAF5FF;
-    height: 100vh;
+#pinpage {
+  background-color: #eaf5ff;
+  height: 100vh;
 }
-.pinpage-box{
-    margin: 20px 0;
-    width: 300px;
-    height: 50px;
-    text-align: center;
-    font-size: 3rem;
+.pinpage-box {
+  margin: 20px 0;
+  width: 300px;
+  height: 50px;
+  text-align: center;
+  font-size: 3rem;
 }
-.pinpage-returncard{
-    margin: 20px 0 0 600px;
-    width: 250px;
-    height: 80px;
-    border: solid;
-    border-top-color: #FF1900;
-    border-left-color: #FF1900;
-    border-right-color: #B71100;
-    border-bottom-color: #B71100;
-    
-    background-color: #F55B3A;
-    border-radius: 0.5rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    font-weight: bold;
-    font-size: 2rem;
-}
-.pinpage-returncard:hover{
-    cursor: pointer;
-    background-color: #B71100;
+.pinpage-returncard {
+  margin: 20px 0 0 600px;
+  width: 250px;
+  height: 80px;
+  border: solid;
+  border-top-color: #ff1900;
+  border-left-color: #ff1900;
+  border-right-color: #b71100;
+  border-bottom-color: #b71100;
 
+  background-color: #f55b3a;
+  border-radius: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-weight: bold;
+  font-size: 2rem;
+}
+.pinpage-returncard:hover {
+  cursor: pointer;
+  background-color: #b71100;
 }
 
 /* 2page - pin */
 
 /* 3page - welcome */
-#welcomepage{
-    background-color: #EAF5FF;
-    height: 100vh;
+#welcomepage {
+  background-color: #eaf5ff;
+  height: 100vh;
 }
-.welcomepage-container{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.welcomepage-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-.welcomepage-head{
-    font-size: 3.2rem;
-    color: #57A1E3;
-    font-weight: bold;
+.welcomepage-head {
+  font-size: 3.2rem;
+  color: #57a1e3;
+  font-weight: bold;
 }
-.welcomepage-content{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 700px;
-    height: 95px;
-    border: solid;
-    border-color: #000003;
-    border-radius: 0.5rem;
-    margin: 20px 0;
-    background-color: #2A3D51;
-    color: #D3DDE3;
-    font-size: 2.8rem;
+.welcomepage-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 700px;
+  height: 95px;
+  border: solid;
+  border-color: #000003;
+  border-radius: 0.5rem;
+  margin: 20px 0;
+  background-color: #2a3d51;
+  color: #d3dde3;
+  font-size: 2.8rem;
 }
-.welcomepage-content:hover{
-    cursor: pointer;
-    background-color: #A9D5E8;
-    
-    color: #000003;
+.welcomepage-content:hover {
+  cursor: pointer;
+  background-color: #a9d5e8;
+
+  color: #000003;
 }
-.welcomepage-return{
-    margin-left: 700px;
+.welcomepage-return {
+  margin-left: 600px;
 }
 
 /* 3page - welcome */
 
 /* 4page - information */
+#informationpage {
+  background-color: #eaf5ff;
+  height: 100vh;
+}
+.information-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.informationpage-head {
+  font-size: 3.2rem;
+  color: #57a1e3;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+.information-text {
+  font-size: 2rem;
+}
+.information-back {
+  margin: 20px 0 0 1000px;
+  width: 170px;
+  height: 80px;
+  border: solid;
+  border-top-color: #ff1900;
+  border-left-color: #ff1900;
+  border-right-color: #b71100;
+  border-bottom-color: #b71100;
+
+  background-color: #f55b3a;
+  border-radius: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-weight: bold;
+  font-size: 2rem;
+}
+.information-back:hover {
+  cursor: pointer;
+  background-color: #b71100;
+}
 
 /* 4page - information */
+
+/* 5page - withdraw start */
+#withdrawpage {
+  background-color: #eaf5ff;
+  height: 100vh;
+}
+.withdrawpage-container {
+}
+.withdrawpage-head {
+  display: flex;
+  justify-content: center;
+  padding-top: 20px;
+  font-size: 1.5rem;
+}
+.withdrawpage-quicklink-container {
+  display: flex;
+  flex-direction: unset;
+  justify-content: space-between;
+}
+.withdrawpage-quicklink-text {
+  font-size: 1.6rem;
+  padding: 0 20px;
+}
+.withdrawpage-button-container {
+  display: flex;
+  justify-content: space-between;
+}
+.withdrawpage-button-box {
+  /* border: solid; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+.withdrawpage-button-square {
+  background-color: #2a3d51;
+  border: solid;
+  border-color: #000003;
+  border-radius: 0.5rem;
+  width: 120px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* color: #d3dde3; */
+  color: #fff;
+  font-size: 2rem;
+  margin: 20px 30px;
+}
+.withdrawpage-button-square:hover {
+  background-color: #d3d3d3;
+  color: #000003;
+  cursor: pointer;
+}
+.withdrawpage-button-back {
+  border-top-color: #ff1900;
+  border-left-color: #ff1900;
+  border-right-color: #b71100;
+  border-bottom-color: #b71100;
+  background-color: #f55b3a;
+}
+.withdrawpage-button-back:hover {
+  background-color: #500700;
+  cursor: pointer;
+  color: #d3d3d3;
+}
+.withdrawpage-button-arrow {
+  width: 110px;
+  margin: 15px 0;
+}
+.withdrawpage-button-arrow:hover {
+  cursor: pointer;
+}
+.withdrawpage-button-input {
+  width: 200px;
+  height: 70px;
+  text-align: center;
+  font-size: 3rem;
+}
+.withdrawpage-button-enter {
+  border-top-color: #006c00;
+  border-left-color: #006c00;
+  border-right-color: #002500;
+  border-bottom-color: #002500;
+  background-color: #0aaa9c;
+}
+.withdrawpage-button-enter:hover {
+  background-color: #006d00;
+  cursor: pointer;
+  color: #d3d3d3;
+}
+/* 5page - withdraw end */
+
+/* 6page - withdrawQuestion start */
+#withdrawquestionpage {
+  background-color: #eaf5ff;
+  height: 100vh;
+}
+.withdraw-questionpage-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.withdraw-questionpage-head {
+  font-size: 5rem;
+  font-weight: bold;
+  color: #4ba2ee;
+}
+.withdraw-questionpage-balance {
+  font-size: 3.5rem;
+}
+.withdraw-questionpage-button-container {
+  display: flex;
+}
+.withdraw-questionpage-btn {
+  width: 200px;
+  margin: 10px 10px;
+}
+/* 6page - withdrawQuestion end */
