@@ -1,21 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
+
 <body>
-    <input type="password" value="" placeholder="enter" id="passwordId">
-    <input type="button" value="+" id="buttonId" onclick="btnplus()">
-    <div>
-        <input type="button" value="arr" id="arrbutton" onclick="addArr()">
-        <div id="window" >
-
+    <section id="loginpage" style="display: none;">
+        <div class="loginpage-container">
+            <div class="loginpage-head">
+                SKKU ATM
+            </div>
+            <div class="loginpage-text">
+                Enter your 16 digit account number or insert your card below:
+            </div>
+            <input type="password" value="" placeholder="Enter Account Number" class="loginpage-box" id="loginPagePasswordId">
+            <div class="loginpage-keypad">
+                <div class="loginpage-keypad-inner" onclick="passwordClick('1');">1</div>
+                <div class="loginpage-keypad-inner" onclick="passwordClick('2');">2</div>
+                <div class="loginpage-keypad-inner" onclick="passwordClick('3');">3</div>
+                <div class="loginpage-keypad-inner" onclick="passwordClick('4');">4</div>
+                <div class="loginpage-keypad-inner" onclick="passwordClick('5');">5</div>
+                <div class="loginpage-keypad-inner" onclick="passwordClick('6');">6</div>
+                <div class="loginpage-keypad-inner" onclick="passwordClick('7');">7</div>
+                <div class="loginpage-keypad-inner" onclick="passwordClick('8');">8</div>
+                <div class="loginpage-keypad-inner" onclick="passwordClick('9');">9</div>
+                <div class="loginpage-keypad-inner" onclick="passwordClick('E');" style="font-size: 1.5rem; "> <span style="color: green;">Enter</span> </div>
+                <div class="loginpage-keypad-inner" onclick="passwordClick('0');">0</div>
+                <div class="loginpage-keypad-inner" onclick="passwordClick('D');" style="font-size: 1.5rem; "><span style="color: red;">Delete</span></div>
+            </div>
+            
         </div>
-    </div>
+    </section>
 
-    <script src="index.js" ></script>
+    <section id="pinpage" style="display: none;">
+        <div class="loginpage-container" >
+            <div class="loginpage-text" style="font-size: 2.5rem;">
+                Please enter your PIN:
+            </div>
+            <input type="password" value="" placeholder="Enter PIN" class="pinpage-box" id="pinPagePasswordId">
+            <div class="loginpage-keypad">
+                <div class="loginpage-keypad-inner" onclick="pinClick('1');">1</div>
+                <div class="loginpage-keypad-inner" onclick="pinClick('2');">2</div>
+                <div class="loginpage-keypad-inner" onclick="pinClick('3');">3</div>
+                <div class="loginpage-keypad-inner" onclick="pinClick('4');">4</div>
+                <div class="loginpage-keypad-inner" onclick="pinClick('5');">5</div>
+                <div class="loginpage-keypad-inner" onclick="pinClick('6');">6</div>
+                <div class="loginpage-keypad-inner" onclick="pinClick('7');">7</div>
+                <div class="loginpage-keypad-inner" onclick="pinClick('8');">8</div>
+                <div class="loginpage-keypad-inner" onclick="pinClick('9');">9</div>
+                <div class="loginpage-keypad-inner" onclick="pinClick('E');" style="font-size: 1.5rem; "> <span style="color: green;">Enter</span> </div>
+                <div class="loginpage-keypad-inner" onclick="pinClick('0');">0</div>
+                <div class="loginpage-keypad-inner" onclick="pinClick('D');" style="font-size: 1.5rem; "><span style="color: red;">Delete</span></div>
+            </div>
+            <div class="pinpage-returncard" onclick="transPinToLogin()">
+                Return Card
+            </div>
+        </div>
+    </section>
+
+    <section id="welcomepage" style="display: none;">
+        <div class="welcomepage-container">
+            <div class="welcomepage-head">
+                WELCOME TO SKKU BANK
+            </div>
+            <div class="welcomepage-content">Account Information</div>
+            <div class="welcomepage-content">Withdraw Funds</div>
+            <div class="welcomepage-content">Deposit Funds</div>
+            <div class="welcomepage-content">Transfer</div>
+        </div>
+        <div class="welcomepage-return">
+            <div class="pinpage-returncard" onclick="transPinToLogin()">
+                Return Card
+             </div>
+        </div>
+    </section>
+
+    <section id="informationpage">
+        <table class="table table-striped" id="informationTableId">
+            <tbody>
+                <tr>
+                    <td>사과</td>
+                    <td>apple</td>
+                </tr>
+            </tbody>
+
+        </table>
+        <input type="button" value="+" onclick="addRow();">
+    </section>
+
+    <script src="index.js"></script>
 </body>
+
 </html>

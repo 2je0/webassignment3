@@ -1,0 +1,139 @@
+*{
+    box-sizing: border-box;
+}
+#loginpage{
+    background-color: #EAF5FF;
+    height: 100vh;
+}
+.loginpage-container{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.loginpage-head{
+    font-size: 5rem;
+    font-weight: bold;
+    color: #4BA2EE;
+}
+.loginpage-text{
+    font-size: 1.5rem;
+}
+.loginpage-box{
+    margin: 20px 0;
+    width: 450px;
+    height: 50px;
+    text-align: center;
+    font-size: 3rem;
+}
+.loginpage-container input::placeholder{
+    text-align: center;
+    font-size: 2rem;
+}
+.loginpage-keypad{
+    
+    display: grid;
+    gap: 20px;
+    grid-template-columns:  80px 80px 80px;
+    grid-template-rows: 80px 80px 80px 80px;
+    
+}
+.loginpage-keypad-inner{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    background-color: #EFEFEF;
+    border-style: solid;
+    border-top-width: thin;
+    border-left-width: thin;
+    /* box-shadow: 2px 2px 0px black; */
+}
+.loginpage-keypad-inner:hover{
+    cursor: pointer;
+    box-shadow: -2px -2px 0px black;
+}
+
+/* 1page - login */
+
+/* 2page - pin */
+#pinpage{
+    background-color: #EAF5FF;
+    height: 100vh;
+}
+.pinpage-box{
+    margin: 20px 0;
+    width: 300px;
+    height: 50px;
+    text-align: center;
+    font-size: 3rem;
+}
+.pinpage-returncard{
+    margin: 20px 0 0 600px;
+    width: 250px;
+    height: 80px;
+    border: solid;
+    border-top-color: #FF1900;
+    border-left-color: #FF1900;
+    border-right-color: #B71100;
+    border-bottom-color: #B71100;
+    
+    background-color: #F55B3A;
+    border-radius: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-weight: bold;
+    font-size: 2rem;
+}
+.pinpage-returncard:hover{
+    cursor: pointer;
+    background-color: #B71100;
+
+}
+
+/* 2page - pin */
+
+/* 3page - welcome */
+#welcomepage{
+    background-color: #EAF5FF;
+    height: 100vh;
+}
+.welcomepage-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.welcomepage-head{
+    font-size: 3.2rem;
+    color: #57A1E3;
+    font-weight: bold;
+}
+.welcomepage-content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 700px;
+    height: 95px;
+    border: solid;
+    border-color: #000003;
+    border-radius: 0.5rem;
+    margin: 20px 0;
+    background-color: #2A3D51;
+    color: #D3DDE3;
+    font-size: 2.8rem;
+}
+.welcomepage-content:hover{
+    cursor: pointer;
+    background-color: #A9D5E8;
+    
+    color: #000003;
+}
+.welcomepage-return{
+    margin-left: 700px;
+}
+
+/* 3page - welcome */
+
+/* 4page - information */
+/* 4page - information */
