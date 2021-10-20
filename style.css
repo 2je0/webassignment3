@@ -291,7 +291,93 @@
   display: flex;
 }
 .withdraw-questionpage-btn {
-  width: 200px;
+  width: 150px;
+  height: 80px;
   margin: 10px 10px;
+  color: #fff;
 }
 /* 6page - withdrawQuestion end */
+
+/* 7page - depositpage start */
+
+.depositpage-keypad {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: 60px 60px 60px;
+  grid-template-rows: 60px 60px 60px 60px 60px;
+}
+.depositpage-keypad-extend {
+  grid-column-start: 1;
+  grid-column-end: 4;
+  grid-row-start: 5;
+  grid-row-end: 6;
+}
+/* 7page - depositpage end */
+
+/* 7page - depositquestionpage start */
+#depositquestionpage {
+  background-color: #eaf5ff;
+  height: 100vh;
+}
+
+/* 7page - depositquestionpage start */
+
+#withdrawcompletepage {
+  background-color: #eaf5ff;
+  height: 100vh;
+}
+.withdrawcomplete-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-items: center;
+}
+.withdrawcomplete-head {
+  font-size: 2rem;
+  margin-top: 10px;
+}
+.withdrawcomplete-image {
+  width: 500px;
+  margin: 70px 0;
+}
+.withdrawcomplete-btn-container {
+  display: flex;
+  width: 700px;
+  justify-content: space-between;
+}
+.withdrawcomplete-btn {
+  width: 200px;
+  height: 60px;
+  border: solid;
+  color: #fff;
+  font-size: 1rem;
+  border-radius: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.withdrawcomplete-btn-home {
+  background-color: #19232e;
+  width: 100px;
+}
+.withdrawcomplete-btn-home:hover {
+  cursor: pointer;
+  background-color: #729bc7;
+}
+.withdrawcomplete-btn-mid {
+  background-color: #2a3d51;
+  width: 300px;
+}
+.withdrawcomplete-btn-mid:hover {
+  cursor: pointer;
+  background-color: #a9d5e8;
+  color: #000003;
+}
+.withdrawcomplete-btn-return {
+  background-color: #f55b3a;
+  width: 150px;
+}
+.withdrawcomplete-btn-return:hover {
+  cursor: pointer;
+  background-color: #b71100;
+}

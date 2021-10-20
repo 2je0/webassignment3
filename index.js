@@ -1,26 +1,28 @@
-let passwordLayer = document.getElementById('passwordId');
-let array = ['1'];
-function btnplus() {
-    let v = passwordLayer.value;
-    passwordLayer.value = v+'a';
-}
 
-function addArr() {
-    array.push('a');
-    for (let i = 0; i < array.length; i++) {
-        console.log(array[i]);
-    }
-}
 
 
 let loginPageLayer = document.getElementById('loginpage');
 let pinPageLayer = document.getElementById('pinpage');
 // loginpageFunction
-let accountNumber = ["123"];
+let accountNumber = ["123", "456"];
+let pinNumber = ["123", "456"];
+let accountBalance = [2000, 1000];
+let accountDate = new Array(accountNumber.length);
+let accountFundOut = new Array(accountNumber.length);
+let accountFundIn = new Array(accountNumber.length);
+let accountRunningBalance = new Array(accountNumber.length);
+for(var i =0; i < accountDate.length; i++){
+	accountDate[i] = new Array();
+	accountFundOut[i] = new Array();
+	accountFundIn[i] = new Array();
+	accountRunningBalance[i] = new Array();
+}
+let nowAccount;
 let loginPagePassword = document.getElementById('loginPagePasswordId');
 function passwordClick(num){
     if(num =='E'){
-        if(accountNumber.includes(loginPagePassword.value)){
+        if (accountNumber.includes(loginPagePassword.value)) {
+            nowAccount = accountNumber.indexOf(loginPagePassword.value);
             transLoginToPin();
         }
         else{
@@ -50,7 +52,7 @@ function transPinToLogin(){
 }
 // pinpageFunction
 
-let pinNumber = ["123"];
+
 let pinTry = 5;
 let pinPagePassword = document.getElementById('pinPagePasswordId');
 function pinClick(num){
@@ -89,6 +91,11 @@ let welcomePageLayer = document.getElementById('welcomepage');
 function transWelcomeToInfo() {
     welcomePageLayer.style.display = 'none';
     informationPageLayer.style.display = 'block';
+    document.getElementById('balanceId').innerHTML = accountBalance[nowAccount];
+    for (let i = 0; i < accountDate[nowAccount].length; i++){
+        addRow(accountDate[nowAccount][i], accountFundOut[nowAccount][i], accountFundIn[nowAccount][i], accountRunningBalance[nowAccount][i]);
+    }
+
 }
 // welcomepageFunction
 
@@ -103,7 +110,8 @@ function getDate(){ //날짜문자열 형식은 자유로운 편
 }
 
 let informationTableVariable = document.getElementById('informationTableId');
-function addRow(){
+function addRow(date , fout, fin, rbalance) {
+    // accountBalance[nowAccount] = accountBalance[nowAccount] + fin - fout;
     let newRow = informationTableVariable.insertRow();
 
     let newCell1 = newRow.insertCell(0);
@@ -111,15 +119,26 @@ function addRow(){
     let newCell3 = newRow.insertCell(2);
     let newCell4 = newRow.insertCell(3);
 
-    newCell1.innerText = getDate();
-    newCell2.innerText = today.toLocaleTimeString('en-US');
-    newCell3.innerText = today.toLocaleString('en-US');
-    newCell4.innerText = today.toLocaleDateString('en-US');
+    // newCell1.innerText = getDate();
+    newCell1.innerText = date;
+    newCell2.innerText = fout;
+    newCell3.innerText = fin;
+    newCell4.innerText = rbalance;
 }
+
 let informationPageLayer = document.getElementById('informationpage')
 function transInfoToWelcome() {
     informationPageLayer.style.display = 'none';
     welcomePageLayer.style.display = 'block';
+    rem();
+
+}
+function rem() {
+    while (informationTableVariable.rows.length > 1) {
+        informationTableVariable.deleteRow(informationTableVariable.rows.length - 1);
+    }
+
+    
 }
 // informationpageFunction
 
@@ -148,11 +167,13 @@ function transWelcomeToWithdraw() {
     withdrawPageLayer.style.display = 'block';
 }
 
+
 //withdrawpageFunction end
 
 //withdrawQuestionpageFunction start
 let withdrawQuestionSpan = document.getElementById('withdrawValueId');
 let withdrawQuestionPageLayer = document.getElementById('withdrawquestionpage');
+let withdrawCompletePageLayer = document.getElementById('withdrawcompletepage');
 function transWithdrawToWithdrawquestion() {
     withdrawQuestionSpan.innerHTML = withdrawInputVariable.value;
     withdrawPageLayer.style.display = 'none';
@@ -163,6 +184,57 @@ function transWithdrawquestionToWithdraw() {
     withdrawPageLayer.style.display = 'block';
     withdrawInputVariable.value = 0;
 }
+function transWithdrawquestionToWithdrawComplete() {
+    withdrawQuestionPageLayer.style.display = 'none';
+    withdrawCompletePageLayer.style.display = 'block';
+    accountDate[nowAccount].push(getDate());
+    accountFundOut[nowAccount].push(withdrawInputVariable.value);
+    accountFundIn[nowAccount].push(0);
+    accountBalance[nowAccount] -= parseInt(withdrawInputVariable.value);
+    accountRunningBalance[nowAccount].push(accountBalance[nowAccount]);
+    withdrawInputVariable.value = 0;
+}
+function transWithdrawCompleteToWithdraw() {
+    withdrawCompletePageLayer.style.display = 'none';
+    withdrawPageLayer.style.display = 'block';
+}
 //withdrawQuestionpageFunction end
+
+
+//depositpageFunction start
+let depositQuestionSpan = document.getElementById('depositQuestionValueId');
+let depositValue = document.getElementById('depositPageInputId');
+let depositPageLayer = document.getElementById('depositpage');
+let depositQuestionPageLayer = document.getElementById('depositquestionpage');
+
+function depositClick(num) {
+    if(num =='E'){
+        transdepositTodepositquestion();
+        depositValue.value = "";
+    }
+    else if (num == 'D'){
+        depositValue.value = "";
+    }
+    else{
+        depositValue.value = depositValue.value + num;
+    }
+}
+function transdepositTodepositquestion() {
+    if (depositValue.value == "") depositValue.value = '0';
+    depositQuestionSpan.innerHTML = depositValue.value;
+    depositPageLayer.style.display = 'none';
+    depositQuestionPageLayer.style.display = 'block';
+}
+function transdepositquestionTodeposit() {
+    depositQuestionPageLayer.style.display = 'none';
+    depositPageLayer.style.display = 'block';
+}
+function transWelcomeTodeposit() {
+    welcomePageLayer.style.display = 'none';
+    depositPageLayer.style.display = 'block';
+}
+
+
+//depositpageFunction end
 
 

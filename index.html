@@ -71,7 +71,7 @@
             </div>
             <div class="welcomepage-content" onclick="transWelcomeToInfo()">Account Information</div>
             <div class="welcomepage-content" onclick="transWelcomeToWithdraw();">Withdraw Funds</div>
-            <div class="welcomepage-content">Deposit Funds</div>
+            <div class="welcomepage-content" onclick="transWelcomeTodeposit()">Deposit Funds</div>
             <div class="welcomepage-content">Transfer</div>
         </div>
         <div class="welcomepage-return">
@@ -81,7 +81,7 @@
         </div>
     </section>
 
-    <section id="informationpage" style="display: none;">
+    <section id="informationpage" >
         <div class="information-container">
             <div class="informationpage-head">
                 Account Information
@@ -100,7 +100,8 @@
                 </tbody>
             
             </table>
-            <input type="button" value="+" onclick="addRow();">
+            <input type="button" value="+" onclick="addRow(0,100);">
+            <input type="button" value="-" onclick="rem();">
             <div class="information-back" onclick="transInfoToWelcome()">
                 Back
             </div>
@@ -151,35 +152,67 @@
             <div class="withdraw-questionpage-head">Withdraw</div>
             <div class="withdraw-questionpage-balance">$ <span id="withdrawValueId"></span>?</div>
             <div class="withdraw-questionpage-button-container">
-                <div class="welcomepage-content withdrawpage-button-enter withdraw-questionpage-btn">YES</div>
+                <div class="welcomepage-content withdrawpage-button-enter withdraw-questionpage-btn" onclick="transWithdrawquestionToWithdrawComplete();">YES</div>
                 <div class="welcomepage-content withdrawpage-button-back withdraw-questionpage-btn" onclick="transWithdrawquestionToWithdraw();">NO</div>
             </div>
         </div>
     </section>
 
-    <section id="depositpage">
+    <section id="depositpage" style="display: none;">
         <div class="loginpage-container">
             <div class="loginpage-text">
                 Enter the amount to deposit
             </div>
-            <input type="text" value="" placeholder="$0000.00" class="loginpage-box" >
-            <div class="loginpage-keypad">
-                <div class="loginpage-keypad-inner" onclick="passwordClick('1');">1</div>
-                <div class="loginpage-keypad-inner" onclick="passwordClick('2');">2</div>
-                <div class="loginpage-keypad-inner" onclick="passwordClick('3');">3</div>
-                <div class="loginpage-keypad-inner" onclick="passwordClick('4');">4</div>
-                <div class="loginpage-keypad-inner" onclick="passwordClick('5');">5</div>
-                <div class="loginpage-keypad-inner" onclick="passwordClick('6');">6</div>
-                <div class="loginpage-keypad-inner" onclick="passwordClick('7');">7</div>
-                <div class="loginpage-keypad-inner" onclick="passwordClick('8');">8</div>
-                <div class="loginpage-keypad-inner" onclick="passwordClick('9');">9</div>
-                <div class="loginpage-keypad-inner" onclick="passwordClick('E');" style="font-size: 1.5rem; "> <span
-                        style="color: green;">Enter</span> </div>
-                <div class="loginpage-keypad-inner" onclick="passwordClick('0');">0</div>
-                <div class="loginpage-keypad-inner" onclick="passwordClick('D');" style="font-size: 1.5rem; "><span
-                        style="color: red;">Delete</span></div>
+            <input type="text" value="" placeholder="$0000.00" class="loginpage-box" style="width: 300px;" id="depositPageInputId">
+            <div class="depositpage-keypad">
+                <div class="loginpage-keypad-inner" onclick="depositClick('1');">1</div>
+                <div class="loginpage-keypad-inner" onclick="depositClick('2');">2</div>
+                <div class="loginpage-keypad-inner" onclick="depositClick('3');">3</div>
+                <div class="loginpage-keypad-inner" onclick="depositClick('4');">4</div>
+                <div class="loginpage-keypad-inner" onclick="depositClick('5');">5</div>
+                <div class="loginpage-keypad-inner" onclick="depositClick('6');">6</div>
+                <div class="loginpage-keypad-inner" onclick="depositClick('7');">7</div>
+                <div class="loginpage-keypad-inner" onclick="depositClick('8');">8</div>
+                <div class="loginpage-keypad-inner" onclick="depositClick('9');">9</div>
+                <div class="loginpage-keypad-inner" onclick="depositClick('0');" style="font-size: 1.5rem; "> <span
+                        >0</span> </div>
+                <div class="loginpage-keypad-inner" onclick="depositClick('.');">.</div>
+                <div class="loginpage-keypad-inner" onclick="depositClick('D');" style="font-size: 1.5rem; "><span
+                        style="color: red;">Del</span></div>
+                <div class="loginpage-keypad-inner depositpage-keypad-extend" onclick="depositClick('E');" > <span style="color: green;">Enter</span> </div>
             </div>
-        
+            <div class="information-back" onclick="transInfoToWelcome()">
+                Back
+            </div>
+        </div>
+    </section>
+
+    <section id="depositquestionpage" style="display: none;">
+        <div class="withdraw-questionpage-container">
+            <div class="withdraw-questionpage-head" style="font-size: 3rem; font-weight: 400;">Are you sure you want to deposit the amount specified?</div>
+            <div class="withdraw-questionpage-balance" style="font-size: 2.8rem;">$ <span id="depositQuestionValueId"></span>?</div>
+            <div class="withdraw-questionpage-button-container">
+                <div class="welcomepage-content withdrawpage-button-enter withdraw-questionpage-btn">YES</div>
+                <div class="welcomepage-content withdrawpage-button-back withdraw-questionpage-btn"
+                    onclick="transdepositquestionTodeposit();">NO</div>
+            </div>
+            <select class="apple" name="Choose ans Account" >choose
+                <option value="asd">asd</option>
+                <option value="axc">rtyd</option>
+                <option value="acvsd">acvb</option>
+            </select>
+        </div>
+    </section>
+
+    <section id="withdrawcompletepage" style="display: none;">
+        <div class="withdrawcomplete-container">
+            <div class="withdrawcomplete-head">Money has been withdrawn.</div>
+            <img src="assets/checkmark.png" alt="" class="withdrawcomplete-image">
+            <div class="withdrawcomplete-btn-container">
+                <div class="withdrawcomplete-btn withdrawcomplete-btn-home" >Home</div>
+                <div class="withdrawcomplete-btn withdrawcomplete-btn-mid" onclick="transWithdrawCompleteToWithdraw();">Perform Another Withdraw</div>
+                <div class="withdrawcomplete-btn withdrawcomplete-btn-return" >Return Card</div>
+            </div>
         </div>
     </section>
 
