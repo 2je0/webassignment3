@@ -83,6 +83,13 @@ function pinClick(num){
 
 // informationpageFunction
 let today = new Date();   
+function getDate(){ //날짜문자열 형식은 자유로운 편 
+    let week = ['Sun', 'Mon', 'Tue', 'Wed', 'Thr', 'Fri', 'Sat'];
+    let Month = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    let dayOfWeek = week[today.getDay()]; 
+    let monthOfYear = Month[today.getMonth()];
+    return dayOfWeek + ' ' + monthOfYear + ' ' + today.getDay() + ' ' + today.getFullYear() + ' ' + today.toLocaleTimeString('en-US') + ' GMT+0900 (Korean Standard Time)' ; 
+}
 
 let informationTableVariable = document.getElementById('informationTableId');
 function addRow(){
@@ -93,7 +100,7 @@ function addRow(){
     let newCell3 = newRow.insertCell(2);
     let newCell4 = newRow.insertCell(3);
 
-    newCell1.innerText = today.toLocaleDateString('en-US');
+    newCell1.innerText = getDate();
     newCell2.innerText = today.toLocaleTimeString('en-US');
     newCell3.innerText = today.toLocaleString('en-US');
     newCell4.innerText = today.toLocaleDateString('en-US');
