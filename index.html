@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    <section id="loginpage" style="display: none;">
+    <section id="loginpage" >
         <div class="loginpage-container">
             <div class="loginpage-head">
                 SKKU ATM
@@ -75,13 +75,13 @@
             <div class="welcomepage-content">Transfer</div>
         </div>
         <div class="welcomepage-return">
-            <div class="pinpage-returncard" onclick="transPinToLogin()">
+            <div class="pinpage-returncard" onclick="transWelcomToLogin()">
                 Return Card
              </div>
         </div>
     </section>
 
-    <section id="informationpage" >
+    <section id="informationpage" style="display: none;">
         <div class="information-container">
             <div class="informationpage-head">
                 Account Information
@@ -181,7 +181,7 @@
                         style="color: red;">Del</span></div>
                 <div class="loginpage-keypad-inner depositpage-keypad-extend" onclick="depositClick('E');" > <span style="color: green;">Enter</span> </div>
             </div>
-            <div class="information-back" onclick="transInfoToWelcome()">
+            <div class="information-back" onclick="transDepositToWelcome()">
                 Back
             </div>
         </div>

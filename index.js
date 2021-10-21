@@ -97,6 +97,10 @@ function transWelcomeToInfo() {
     }
 
 }
+function transWelcomToLogin() {
+    welcomePageLayer.style.display = 'none';
+    loginPageLayer.style.display = 'block';
+}
 // welcomepageFunction
 
 // informationpageFunction
@@ -232,6 +236,11 @@ function transdepositquestionTodeposit() {
 function transWelcomeTodeposit() {
     welcomePageLayer.style.display = 'none';
     depositPageLayer.style.display = 'block';
+}
+function transDepositToWelcome() {
+    
+    depositPageLayer.style.display = 'none';
+    welcomePageLayer.style.display = 'block';
 }
 
 
