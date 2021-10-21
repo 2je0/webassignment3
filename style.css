@@ -381,3 +381,40 @@
   cursor: pointer;
   background-color: #b71100;
 }
+
+/* 7page - depositquestionpage end */
+
+/* 8page - moneyinnto ATM page start */
+#moneyintoATMpage {
+  background-color: #eaf5ff;
+  height: 100vh;
+}
+.moneyintoATM-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.moneyintoATM-text {
+  font-size: 1.2rem;
+  margin: 10px 0;
+}
+.moneyintoATM-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #2a3d51;
+  width: 400px;
+}
+.moneyintoATM-btn:hover {
+  cursor: pointer;
+  background-color: #a9d5e8;
+  color: #000003;
+}
+/* 8page - moneyinnto ATM page end */
+
+/* 9page - deposit complete page start */
+#depositcompletepage {
+  background-color: #eaf5ff;
+  height: 100vh;
+}
+/* 9page - deposit complete page end */

@@ -192,7 +192,7 @@
             <div class="withdraw-questionpage-head" style="font-size: 3rem; font-weight: 400;">Are you sure you want to deposit the amount specified?</div>
             <div class="withdraw-questionpage-balance" style="font-size: 2.8rem;">$ <span id="depositQuestionValueId"></span>?</div>
             <div class="withdraw-questionpage-button-container">
-                <div class="welcomepage-content withdrawpage-button-enter withdraw-questionpage-btn">YES</div>
+                <div class="welcomepage-content withdrawpage-button-enter withdraw-questionpage-btn" onclick="transDepositToMoneyintoATM();">YES</div>
                 <div class="welcomepage-content withdrawpage-button-back withdraw-questionpage-btn"
                     onclick="transdepositquestionTodeposit();">NO</div>
             </div>
@@ -209,13 +209,37 @@
             <div class="withdrawcomplete-head">Money has been withdrawn.</div>
             <img src="assets/checkmark.png" alt="" class="withdrawcomplete-image">
             <div class="withdrawcomplete-btn-container">
-                <div class="withdrawcomplete-btn withdrawcomplete-btn-home" >Home</div>
+                <div class="withdrawcomplete-btn withdrawcomplete-btn-home" onclick="transWithdrawCompleteToWelcome();">Home</div>
                 <div class="withdrawcomplete-btn withdrawcomplete-btn-mid" onclick="transWithdrawCompleteToWithdraw();">Perform Another Withdraw</div>
-                <div class="withdrawcomplete-btn withdrawcomplete-btn-return" >Return Card</div>
+                <div class="withdrawcomplete-btn withdrawcomplete-btn-return" onclick="transWithdrawCompleteToLogin();" >Return Card</div>
             </div>
         </div>
     </section>
 
+    <section id="moneyintoATMpage" style="display: none;">
+        <div class="moneyintoATM-container">
+            <div class="moneyintoATM-text">Enter the specified amount of money into the ATM.</div>
+            <div class="withdrawcomplete-btn moneyintoATM-btn" onclick="transMoneyintoATMToDepositComplete();">OK</div>
+        </div>
+    </section>
+
+    <section id="depositcompletepage" style="display: none;" >
+        <div class="withdrawcomplete-container">
+            <div class="withdrawcomplete-head">Money has been deposited.</div>
+            <img src="assets/checkmark.png" alt="" class="withdrawcomplete-image">
+            <div class="withdrawcomplete-btn-container">
+                <div class="withdrawcomplete-btn withdrawcomplete-btn-home" onclick="transDepositCompleteToWelcome();">Home
+                </div>
+                <div class="withdrawcomplete-btn withdrawcomplete-btn-mid" style="width: 200px;" onclick="transDepositCompleteToDeposit();">
+                    Deposit again</div>
+                <div class="withdrawcomplete-btn withdrawcomplete-btn-return" onclick="transDepositCompleteToLogin();">
+                    Return Card</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- To Do : deposit : Yes, nextpage, reflect information(running balance)
+    transfer : all -->
 
     <script src="index.js"></script>
 </body>

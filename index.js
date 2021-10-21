@@ -153,12 +153,14 @@ let withdrawPageLayer = document.getElementById('withdrawpage')
 let withdrawInputVariable = document.getElementById('withdrawInputId');
 let arrowLayer = document.getElementById('withdrawArrowId');
 function withdrawUpdate(num) {
-    withdrawInputVariable.value = num;
+    if(parseInt(num) > accountBalance[nowAccount]) alert('Lack of Balance');
+    else withdrawInputVariable.value = num;
 }
 function withdrawPlus(num) {
     let sum = parseInt(withdrawInputVariable.value) + parseInt(num);
     if (sum > 300) alert('$300 is the limit to withdraw from the ATM');
-    else if (sum <0) alert('$0 is the limit to withdraw from the ATM');
+    else if (sum < 0) alert('$0 is the limit to withdraw from the ATM');
+    else if (sum > accountBalance[nowAccount]) alert('Lack of Balance');
     else
         withdrawInputVariable.value = sum;
 }
@@ -202,6 +204,15 @@ function transWithdrawCompleteToWithdraw() {
     withdrawCompletePageLayer.style.display = 'none';
     withdrawPageLayer.style.display = 'block';
 }
+
+function transWithdrawCompleteToWelcome() {
+    withdrawCompletePageLayer.style.display = 'none';
+    welcomePageLayer.style.display = 'block';
+}
+function transWithdrawCompleteToLogin() {
+    withdrawCompletePageLayer.style.display = 'none';
+    loginPageLayer.style.display = 'block';
+}
 //withdrawQuestionpageFunction end
 
 
@@ -214,7 +225,6 @@ let depositQuestionPageLayer = document.getElementById('depositquestionpage');
 function depositClick(num) {
     if(num =='E'){
         transdepositTodepositquestion();
-        depositValue.value = "";
     }
     else if (num == 'D'){
         depositValue.value = "";
@@ -243,6 +253,40 @@ function transDepositToWelcome() {
     welcomePageLayer.style.display = 'block';
 }
 
+let moneyintoATMPageLayer = document.getElementById('moneyintoATMpage');
+function transDepositToMoneyintoATM() {
+    
+    depositQuestionPageLayer.style.display = 'none';
+    moneyintoATMPageLayer.style.display = 'block';
+}
+let depositCompletePageLayer = document.getElementById('depositcompletepage');
+function transMoneyintoATMToDepositComplete() {
+    
+    moneyintoATMPageLayer.style.display = 'none';
+    depositCompletePageLayer.style.display = 'block';
+    accountDate[nowAccount].push(getDate());
+    accountFundOut[nowAccount].push(0);
+    accountFundIn[nowAccount].push(depositValue.value);
+    accountBalance[nowAccount] += parseFloat(depositValue.value);
+    accountRunningBalance[nowAccount].push(accountBalance[nowAccount]);
+    depositValue.value = "";
+    
+}
+function transDepositCompleteToWelcome() {
+    
+    depositCompletePageLayer.style.display = 'none';
+    welcomePageLayer.style.display = 'block';
+}
+function transDepositCompleteToDeposit() {
+    
+    depositCompletePageLayer.style.display = 'none';
+    depositPageLayer.style.display = 'block';
+}
+function transDepositCompleteToLogin() {
+    
+    depositCompletePageLayer.style.display = 'none';
+    loginPageLayer.style.display = 'block';
+}
 
 //depositpageFunction end
 
