@@ -110,7 +110,7 @@ function getDate(){ //날짜문자열 형식은 자유로운 편
     let Month = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
     let dayOfWeek = week[today.getDay()]; 
     let monthOfYear = Month[today.getMonth()];
-    return dayOfWeek + ' ' + monthOfYear + ' ' + today.getDay() + ' ' + today.getFullYear() + ' ' + today.toLocaleTimeString('en-US') + ' GMT+0900 (Korean Standard Time)' ; 
+    return dayOfWeek + ' ' + monthOfYear + ' ' + today.getDate() + ' ' + today.getFullYear() + ' ' + today.toLocaleTimeString('en-US') + ' GMT+0900 (Korean Standard Time)' ; 
 }
 
 let informationTableVariable = document.getElementById('informationTableId');
@@ -123,7 +123,7 @@ function addRow(date , fout, fin, rbalance) {
     let newCell3 = newRow.insertCell(2);
     let newCell4 = newRow.insertCell(3);
 
-    // newCell1.innerText = getDate();
+    // newCell1.innerText = newGetDate();
     newCell1.innerText = date;
     newCell2.innerText = fout;
     newCell3.innerText = fin;
@@ -193,7 +193,7 @@ function transWithdrawquestionToWithdraw() {
 function transWithdrawquestionToWithdrawComplete() {
     withdrawQuestionPageLayer.style.display = 'none';
     withdrawCompletePageLayer.style.display = 'block';
-    accountDate[nowAccount].push(getDate());
+    accountDate[nowAccount].push(newGetDate());
     accountFundOut[nowAccount].push(withdrawInputVariable.value);
     accountFundIn[nowAccount].push(0);
     accountBalance[nowAccount] -= parseInt(withdrawInputVariable.value);
@@ -264,7 +264,7 @@ function transMoneyintoATMToDepositComplete() {
     
     moneyintoATMPageLayer.style.display = 'none';
     depositCompletePageLayer.style.display = 'block';
-    accountDate[nowAccount].push(getDate());
+    accountDate[nowAccount].push(newGetDate());
     accountFundOut[nowAccount].push(0);
     accountFundIn[nowAccount].push(depositValue.value);
     accountBalance[nowAccount] += parseFloat(depositValue.value);
