@@ -290,11 +290,32 @@ function transDepositCompleteToLogin() {
 
 //depositpageFunction end
 
+//transfer page function start
+let transferAccountFrom;
+let transferAccountTo;
+let transferValue = document.getElementById('transferPageInputId');
+let transferPageLayer = document.getElementById('transferpage');
 $('#fromid li > a').on('click', function () {
-    alert('asd');
 	    $('#dropdownMenuButton2_left').text($(this).text());
-		httpMethod = $(this).attr('value');
-		console.log('선택된 메소드: ' + httpMethod);
+		transferAccountFrom = $(this).attr('value');
+});
+$('#Toid li > a').on('click', function () {
+	    $('#dropdownMenuButton2_right').text($(this).text());
+		transferAccountTo = $(this).attr('value');
 });
 
+function transferClick(num) {
+    if(num =='E'){
+        transdepositTodepositquestion();
+    }
+    else if (num == 'D'){
+        transferValue.value = "";
+    }
+    else{
+        transferValue.value = transferValue.value + num;
+    }
+}
+
+
+//transfer page function start
 

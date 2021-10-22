@@ -1,6 +1,6 @@
 * {
   box-sizing: border-box;
-  background-color: #eaf5ff;
+  /* background-color: #eaf5ff; */
 }
 
 input {
@@ -434,5 +434,10 @@ input {
   flex-direction: column;
 }
 .transferpage-left-text {
+  text-align: center;
+  font-size: 2rem;
+  color: #4ba2ee;
+  font-weight: bold;
 }
+
 /* 10page - transfer page end */
