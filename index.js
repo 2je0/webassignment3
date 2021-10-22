@@ -104,8 +104,8 @@ function transWelcomToLogin() {
 // welcomepageFunction
 
 // informationpageFunction
-let today = new Date();   
 function getDate(){ //날짜문자열 형식은 자유로운 편 
+    let today = new Date();   
     let week = ['Sun', 'Mon', 'Tue', 'Wed', 'Thr', 'Fri', 'Sat'];
     let Month = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
     let dayOfWeek = week[today.getDay()]; 
@@ -289,5 +289,12 @@ function transDepositCompleteToLogin() {
 }
 
 //depositpageFunction end
+
+$('#fromid li > a').on('click', function () {
+    alert('asd');
+	    $('#dropdownMenuButton2_left').text($(this).text());
+		httpMethod = $(this).attr('value');
+		console.log('선택된 메소드: ' + httpMethod);
+});
 
 

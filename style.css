@@ -418,3 +418,16 @@
   height: 100vh;
 }
 /* 9page - deposit complete page end */
+
+/* 10page - transfer page start */
+.transferpage-container {
+  display: flex;
+  justify-content: space-around;
+}
+.transferpage-left {
+  display: flex;
+  flex-direction: column;
+}
+.transferpage-left-text {
+}
+/* 10page - transfer page end */

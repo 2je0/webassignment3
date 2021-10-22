@@ -7,11 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
 
 <body>
-    <section id="loginpage" >
+    <section id="loginpage" style="display: none;" >
         <div class="loginpage-container">
             <div class="loginpage-head">
                 SKKU ATM
@@ -238,9 +241,85 @@
         </div>
     </section>
 
+    <section id="transferpage" >
+        <div class="transferpage-container">
+            <div class="transferpage-left">
+                <div class="transferpage-left-text">
+                    FROM
+                </div>
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        Dropdown button
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
+                        <li><a class="dropdown-item active" href="#">Action</a></li>
+                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="#">Separated link</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="loginpage-container">
+                <div class="loginpage-text">
+                    Enter the amount to deposit
+                </div>
+                
+                <input type="text" value="" placeholder="$0000.00" class="loginpage-box" style="width: 300px;"
+                    id="transferPageInputId">
+                <div class="depositpage-keypad">
+                    <div class="loginpage-keypad-inner" onclick="depositClick('1');">1</div>
+                    <div class="loginpage-keypad-inner" onclick="depositClick('2');">2</div>
+                    <div class="loginpage-keypad-inner" onclick="depositClick('3');">3</div>
+                    <div class="loginpage-keypad-inner" onclick="depositClick('4');">4</div>
+                    <div class="loginpage-keypad-inner" onclick="depositClick('5');">5</div>
+                    <div class="loginpage-keypad-inner" onclick="depositClick('6');">6</div>
+                    <div class="loginpage-keypad-inner" onclick="depositClick('7');">7</div>
+                    <div class="loginpage-keypad-inner" onclick="depositClick('8');">8</div>
+                    <div class="loginpage-keypad-inner" onclick="depositClick('9');">9</div>
+                    <div class="loginpage-keypad-inner" onclick="depositClick('0');" style="font-size: 1.5rem; "> <span>0</span>
+                    </div>
+                    <div class="loginpage-keypad-inner" onclick="depositClick('.');">.</div>
+                    <div class="loginpage-keypad-inner" onclick="depositClick('D');" style="font-size: 1.5rem; "><span
+                            style="color: red;">Del</span></div>
+                    <div class="loginpage-keypad-inner depositpage-keypad-extend" onclick="depositClick('E');"> <span
+                            style="color: green;">Enter</span> </div>
+                </div>
+                
+            </div>
+            <div class="transferpage-left">
+                <div class="transferpage-left-text">
+                    To
+                </div>
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2_left" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        Dropdown button
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2" id="fromid">
+                        <li><a class="dropdown-item active" href="#">Action</a></li>
+                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="#">Separated link</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="information-back" onclick="transDepositToWelcome()">
+            Back
+        </div>
+    </section>
+
     <!-- To Do : deposit : Yes, nextpage, reflect information(running balance)
     transfer : all -->
-
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+        
     <script src="index.js"></script>
 </body>
 
