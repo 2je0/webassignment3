@@ -1,5 +1,10 @@
 * {
   box-sizing: border-box;
+  background-color: #eaf5ff;
+}
+
+input {
+  background-color: #fff;
 }
 #loginpage {
   background-color: #eaf5ff;
@@ -135,7 +140,7 @@
 /* 4page - information */
 #informationpage {
   background-color: #eaf5ff;
-  height: 100vh;
+  height: 100%;
 }
 .information-container {
   display: flex;
