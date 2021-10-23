@@ -5,7 +5,7 @@ let loginPageLayer = document.getElementById('loginpage');
 let pinPageLayer = document.getElementById('pinpage');
 // loginpageFunction
 let accountNumber = ["123", "456","789","6742","1234567812345678"];
-let pinNumber = ["123", "456","789","1966","0000"];
+let pinNumber = ["123", "456","789","6742","0000"];
 let accountBalance = [2000, 1000,0,0,0];
 let accountDate = new Array(accountNumber.length);
 let accountFundOut = new Array(accountNumber.length);
