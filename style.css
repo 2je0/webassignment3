@@ -140,7 +140,7 @@ input {
 /* 4page - information */
 #informationpage {
   background-color: #eaf5ff;
-  height: 100%;
+  height: 100vh;
 }
 .information-container {
   display: flex;
@@ -438,6 +438,14 @@ input {
   font-size: 2rem;
   color: #4ba2ee;
   font-weight: bold;
+}
+#transferquestionpage {
+  background-color: #eaf5ff;
+  height: 100vh;
+}
+#transfercompletepage {
+  background-color: #eaf5ff;
+  height: 100vh;
 }
 
 /* 10page - transfer page end */

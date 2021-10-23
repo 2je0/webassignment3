@@ -104,11 +104,11 @@ function transWelcomToLogin() {
 // welcomepageFunction
 
 // informationpageFunction
-function getDate(){ //날짜문자열 형식은 자유로운 편 
+function newGetDate(){ //날짜문자열 형식은 자유로운 편 
     let today = new Date();   
     let week = ['Sun', 'Mon', 'Tue', 'Wed', 'Thr', 'Fri', 'Sat'];
     let Month = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-    let dayOfWeek = week[today.getDay()]; 
+    let dayOfWeek = week[today.getDate()]; 
     let monthOfYear = Month[today.getMonth()];
     return dayOfWeek + ' ' + monthOfYear + ' ' + today.getDate() + ' ' + today.getFullYear() + ' ' + today.toLocaleTimeString('en-US') + ' GMT+0900 (Korean Standard Time)' ; 
 }
@@ -193,11 +193,12 @@ function transWithdrawquestionToWithdraw() {
 function transWithdrawquestionToWithdrawComplete() {
     withdrawQuestionPageLayer.style.display = 'none';
     withdrawCompletePageLayer.style.display = 'block';
-    accountDate[nowAccount].push(newGetDate());
-    accountFundOut[nowAccount].push(withdrawInputVariable.value);
-    accountFundIn[nowAccount].push(0);
-    accountBalance[nowAccount] -= parseInt(withdrawInputVariable.value);
-    accountRunningBalance[nowAccount].push(accountBalance[nowAccount]);
+    updateInformation(0, withdrawInputVariable.value);
+    // accountDate[nowAccount].push(newGetDate());
+    // accountFundOut[nowAccount].push(withdrawInputVariable.value);
+    // accountFundIn[nowAccount].push(0);
+    // accountBalance[nowAccount] -= parseInt(withdrawInputVariable.value);
+    // accountRunningBalance[nowAccount].push(accountBalance[nowAccount]);
     withdrawInputVariable.value = 0;
 }
 function transWithdrawCompleteToWithdraw() {
@@ -264,13 +265,17 @@ function transMoneyintoATMToDepositComplete() {
     
     moneyintoATMPageLayer.style.display = 'none';
     depositCompletePageLayer.style.display = 'block';
-    accountDate[nowAccount].push(newGetDate());
-    accountFundOut[nowAccount].push(0);
-    accountFundIn[nowAccount].push(depositValue.value);
-    accountBalance[nowAccount] += parseFloat(depositValue.value);
-    accountRunningBalance[nowAccount].push(accountBalance[nowAccount]);
+    updateInformation(depositValue.value,0);
     depositValue.value = "";
     
+}
+function updateInformation(fin,fout){
+    accountDate[nowAccount].push(newGetDate());
+    accountFundIn[nowAccount].push(fin);
+    accountFundOut[nowAccount].push(fout);
+    accountBalance[nowAccount] += parseFloat(fin);
+    accountBalance[nowAccount] -= parseFloat(fout);
+    accountRunningBalance[nowAccount].push(accountBalance[nowAccount]);
 }
 function transDepositCompleteToWelcome() {
     
@@ -291,22 +296,31 @@ function transDepositCompleteToLogin() {
 //depositpageFunction end
 
 //transfer page function start
-let transferAccountFrom;
-let transferAccountTo;
+let transferAccountFrom="";
+let transferAccountTo="";
 let transferValue = document.getElementById('transferPageInputId');
+let transferQuestionFromSpan = document.getElementById('transferQuestionFromId');
+let transferQuestionToSpan = document.getElementById('transferQuestionToId');
+let transferQuestionValueSpan = document.getElementById('transferValueSpanId');
 let transferPageLayer = document.getElementById('transferpage');
+let transferQuestionPageLayer = document.getElementById('transferquestionpage');
+let transferCompletePageLayer = document.getElementById('transfercompletepage');
 $('#fromid li > a').on('click', function () {
-	    $('#dropdownMenuButton2_left').text($(this).text());
-		transferAccountFrom = $(this).attr('value');
+	$('#dropdownMenuButton2_left').text($(this).text());
+    // transferAccountFrom = $(this).attr('value');
+    transferAccountFrom = $(this).text();
 });
 $('#Toid li > a').on('click', function () {
-	    $('#dropdownMenuButton2_right').text($(this).text());
-		transferAccountTo = $(this).attr('value');
+	$('#dropdownMenuButton2_right').text($(this).text());
+    transferAccountTo = $(this).text();
+
 });
 
 function transferClick(num) {
-    if(num =='E'){
-        transdepositTodepositquestion();
+    if (num == 'E') {
+        if (transferValue.value == "")
+            transferValue.value = 0;
+        transTransferToQuestion();
     }
     else if (num == 'D'){
         transferValue.value = "";
@@ -315,7 +329,58 @@ function transferClick(num) {
         transferValue.value = transferValue.value + num;
     }
 }
+function transTransferToWelcome() {
+    transferPageLayer.style.display = 'none';
+    welcomePageLayer.style.display = 'block';
+}
+function transWelcomeToTransfer() {
+    welcomePageLayer.style.display = 'none';
+    transferPageLayer.style.display = 'block';
+}
 
+function transTransferToQuestion() {
+    if (transferAccountFrom == "" || transferAccountTo == "") {
+        alert('Choose Account');
+        return;
+    }
+    transferPageLayer.style.display = 'none';
+    transferQuestionPageLayer.style.display = 'block';
+    transferQuestionValueSpan.innerHTML = transferValue.value;
+    transferQuestionToSpan.innerHTML = transferAccountTo;
+    transferQuestionFromSpan.innerHTML = transferAccountFrom;
+}
+function transQuestionToTransfer() {
+    transferValue.value = "";
+    transferQuestionPageLayer.style.display = 'none';
+    transferPageLayer.style.display = 'block';
+}
+function transQuestionToComplete() {
+    transferQuestionPageLayer.style.display = 'none';
+    transferCompletePageLayer.style.display = 'block';
+    /*
+        To do :
+        Make Input value = "" 
+        information update
+
+    */
+}
+function transCompleteToWelcome() {
+    transferCompletePageLayer.style.display = 'none';
+    welcomePageLayer.style.display = 'block';
+}
+function transCompleteToTransfer() {
+    transferCompletePageLayer.style.display = 'none';
+    transferPageLayer.style.display = 'block';
+}
+function transCompleteToLogin() {
+    transferCompletePageLayer.style.display = 'none';
+    loginPageLayer.style.display = 'block';
+}
+
+
+//To do : when complete transfer, change transferAccont ""
+//value = 0
+//fill transfer page dropdown menu with account ids
 
 //transfer page function start
 

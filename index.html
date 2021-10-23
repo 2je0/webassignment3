@@ -75,7 +75,7 @@
             <div class="welcomepage-content" onclick="transWelcomeToInfo()">Account Information</div>
             <div class="welcomepage-content" onclick="transWelcomeToWithdraw();">Withdraw Funds</div>
             <div class="welcomepage-content" onclick="transWelcomeTodeposit()">Deposit Funds</div>
-            <div class="welcomepage-content">Transfer</div>
+            <div class="welcomepage-content" onclick="transWelcomeToTransfer();">Transfer</div>
         </div>
         <div class="welcomepage-return">
             <div class="pinpage-returncard" onclick="transWelcomToLogin()">
@@ -199,11 +199,6 @@
                 <div class="welcomepage-content withdrawpage-button-back withdraw-questionpage-btn"
                     onclick="transdepositquestionTodeposit();">NO</div>
             </div>
-            <select class="apple" name="Choose ans Account" >choose
-                <option value="asd">asd</option>
-                <option value="axc">rtyd</option>
-                <option value="acvsd">acvb</option>
-            </select>
         </div>
     </section>
 
@@ -241,7 +236,7 @@
         </div>
     </section>
 
-    <section id="transferpage" >
+    <section id="transferpage" style="display: none;">
         <div class="transferpage-container">
             <div class="transferpage-left">
                 <div class="transferpage-left-text">
@@ -256,6 +251,8 @@
                         <li><a class="dropdown-item active" href="#">Action</a></li>
                         <li><a class="dropdown-item" href="#">Another action</a></li>
                         <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        <li><a class="dropdown-item" href="#">1234567812345678</a></li>
+
                         <li>
                             <hr class="dropdown-divider">
                         </li>
@@ -282,7 +279,7 @@
                     <div class="loginpage-keypad-inner" onclick="transferClick('.');">.</div>
                     <div class="loginpage-keypad-inner" onclick="transferClick('D');" style="font-size: 1.5rem; "><span
                             style="color: red;">Del</span></div>
-                    <div class="loginpage-keypad-inner depositpage-keypad-extend" onclick="depositClick('E');"> <span
+                    <div class="loginpage-keypad-inner depositpage-keypad-extend" onclick="transferClick('E');"> <span
                             style="color: green;">Enter</span> </div>
                 </div>
                 
@@ -301,6 +298,7 @@
                         <li><a class="dropdown-item" href="#">Another action</a></li>
                         <li><a class="dropdown-item" href="#">Something else here</a></li>
                         <li><a class="dropdown-item" href="#">1234567812345678</a></li>
+                        <li><a class="dropdown-item" href="#">asdf</a></li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>
@@ -309,8 +307,39 @@
                 </div>
             </div>
         </div>
-        <div class="information-back" onclick="transDepositToWelcome()">
+        <div class="information-back" onclick="transTransferToWelcome()">
             Back
+        </div>
+    </section>
+
+    <section id="transferquestionpage" style="display: none;">
+        <div class="withdraw-questionpage-container">
+            <div class="withdraw-questionpage-head">Transfer</div>
+            <div class="withdraw-questionpage-balance" style="font-size: 2.5rem;">$ <span id="transferValueSpanId"></span>
+                <div>From <span id="transferQuestionFromId"></span></div>
+                <div>To <span id="transferQuestionToId"></span></div>
+            </div>
+            <div class="withdraw-questionpage-button-container">
+                <div class="welcomepage-content withdrawpage-button-enter withdraw-questionpage-btn"
+                    onclick="transQuestionToComplete();">YES</div>
+                <div class="welcomepage-content withdrawpage-button-back withdraw-questionpage-btn"
+                    onclick="transQuestionToTransfer();">NO</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="transfercompletepage" >
+        <div class="withdrawcomplete-container">
+            <div class="withdrawcomplete-head">Money has been transferred.</div>
+            <img src="assets/checkmark.png" alt="" class="withdrawcomplete-image">
+            <div class="withdrawcomplete-btn-container">
+                <div class="withdrawcomplete-btn withdrawcomplete-btn-home" onclick="transCompleteToWelcome();">Home
+                </div>
+                <div class="withdrawcomplete-btn withdrawcomplete-btn-mid" onclick="transCompleteToTransfer();">
+                    Perform Another Transaction</div>
+                <div class="withdrawcomplete-btn withdrawcomplete-btn-return" onclick="transCompleteToLogin();">
+                    Return Card</div>
+            </div>
         </div>
     </section>
 
