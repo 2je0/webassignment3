@@ -305,15 +305,18 @@ let transferQuestionValueSpan = document.getElementById('transferValueSpanId');
 let transferPageLayer = document.getElementById('transferpage');
 let transferQuestionPageLayer = document.getElementById('transferquestionpage');
 let transferCompletePageLayer = document.getElementById('transfercompletepage');
-$('#fromid li > a').on('click', function () {
-	$('#dropdownMenuButton2_left').text($(this).text());
-    // transferAccountFrom = $(this).attr('value');
-    transferAccountFrom = $(this).text();
-});
-$('#Toid li > a').on('click', function () {
-	$('#dropdownMenuButton2_right').text($(this).text());
-    transferAccountTo = $(this).text();
+// $('#fromid li > a').on('click', function () {
+// 	$('#dropdownMenuButton2_left').text($(this).text());
+//     // transferAccountFrom = $(this).attr('value');
+//     transferAccountFrom = $(this).text();
+// });
+// $('#Toid li > a').on('click', function () {
+// 	$('#dropdownMenuButton2_right').text($(this).text());
+//     transferAccountTo = $(this).text();
 
+// });
+$(document).on("click","#fromid li",function(){
+    alert($(this).text());
 });
 
 function transferClick(num) {
@@ -369,6 +372,8 @@ function transQuestionToComplete() {
     transferValue.value = "";
     document.getElementById('dropdownMenuButton2_right').innerHTML = "Choose an Account";
     document.getElementById('dropdownMenuButton2_left').innerHTML = "Choose an Account";
+    transferAccountFrom="";
+    transferAccountTo="";
 }
 function transCompleteToWelcome() {
     transferCompletePageLayer.style.display = 'none';
