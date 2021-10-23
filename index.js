@@ -4,9 +4,9 @@
 let loginPageLayer = document.getElementById('loginpage');
 let pinPageLayer = document.getElementById('pinpage');
 // loginpageFunction
-let accountNumber = ["123", "456"];
-let pinNumber = ["123", "456"];
-let accountBalance = [2000, 1000];
+let accountNumber = ["123", "456","789","6742","1234567812345678"];
+let pinNumber = ["123", "456","789","1966","0000"];
+let accountBalance = [2000, 1000,0,0,0];
 let accountDate = new Array(accountNumber.length);
 let accountFundOut = new Array(accountNumber.length);
 let accountFundIn = new Array(accountNumber.length);
@@ -83,6 +83,13 @@ function pinClick(num){
 function transPinToWelcome() {
     pinPageLayer.style.display = 'none';
     welcomePageLayer.style.display = 'block';
+    addDropdownMenu('fromid', accountNumber[nowAccount]);
+    for (let i = 0; i < accountNumber.length; i++){
+        if (i == nowAccount) continue;
+        addDropdownMenu('Toid', accountNumber[i]);
+    }
+
+
 }
 // pinpageFunction
 
@@ -100,6 +107,7 @@ function transWelcomeToInfo() {
 function transWelcomToLogin() {
     welcomePageLayer.style.display = 'none';
     loginPageLayer.style.display = 'block';
+    removeTransferAccount();
 }
 // welcomepageFunction
 
@@ -213,6 +221,7 @@ function transWithdrawCompleteToWelcome() {
 function transWithdrawCompleteToLogin() {
     withdrawCompletePageLayer.style.display = 'none';
     loginPageLayer.style.display = 'block';
+    removeTransferAccount();
 }
 //withdrawQuestionpageFunction end
 
@@ -291,6 +300,7 @@ function transDepositCompleteToLogin() {
     
     depositCompletePageLayer.style.display = 'none';
     loginPageLayer.style.display = 'block';
+    removeTransferAccount();
 }
 
 //depositpageFunction end
@@ -307,17 +317,35 @@ let transferQuestionPageLayer = document.getElementById('transferquestionpage');
 let transferCompletePageLayer = document.getElementById('transfercompletepage');
 // $('#fromid li > a').on('click', function () {
 // 	$('#dropdownMenuButton2_left').text($(this).text());
-//     // transferAccountFrom = $(this).attr('value');
 //     transferAccountFrom = $(this).text();
+//     alert(transferAccountFrom);
 // });
 // $('#Toid li > a').on('click', function () {
 // 	$('#dropdownMenuButton2_right').text($(this).text());
 //     transferAccountTo = $(this).text();
 
 // });
-$(document).on("click","#fromid li",function(){
-    alert($(this).text());
+// $(document).on("click","#fromid li",function(){
+//     alert($(this).text());
+// });
+$("#fromid").on("click","li", function(e){ 
+    $('#dropdownMenuButton2_left').text($(this).text());
+    transferAccountFrom = $(this).text();
 });
+$("#Toid").on("click","li", function(e){ 
+    $('#dropdownMenuButton2_right').text($(this).text());
+    transferAccountTo = $(this).text();
+});
+function removeTransferAccount() {
+    let listFrom = document.getElementById('fromid');
+    let listTo = document.getElementById('Toid');
+    let listFromItem = listFrom.getElementsByTagName('li');
+    let listToItem = listTo.getElementsByTagName('li');
+    while (listFromItem.length > 0) listFromItem[0].remove();
+    while (listToItem.length > 0) listToItem[0].remove();
+}
+
+
 
 function transferClick(num) {
     if (num == 'E') {
@@ -386,29 +414,17 @@ function transCompleteToTransfer() {
 function transCompleteToLogin() {
     transferCompletePageLayer.style.display = 'none';
     loginPageLayer.style.display = 'block';
+    removeTransferAccount();
 }
-function addDropdownMenu() {
-    // 1. 추가할 값을 input창에서 읽어온다
-  let addValue 
-    = "lee";
-  
-  // 2. 추가할 li element 생성
-  // 2-1. 추가할 li element 생성
-    let li = document.createElement("li");
+function addDropdownMenu(where,str) {
     let li_a = document.createElement('a');
-    li_a.className += "dropdown-item";
     li_a.setAttribute('href', '#');
-  // 2-2. li에 id 속성 추가 
-//   li.setAttribute('id',addValue);
-  
-  // 2-3. li에 text node 추가 
-  let textNode = document.createTextNode(addValue);
-  li_a.appendChild(textNode);
-  
-  // 3. 생성된 li를 ol에 추가
-  document
-    .getElementById('fromid')
-    .appendChild(li_a);
+    li_a.className += "dropdown-item";
+    let textNode = document.createTextNode(str);
+    li_a.appendChild(textNode);
+    let li = document.createElement('li');
+    li.appendChild(li_a);
+    document.getElementById(where).appendChild(li);  
 }
 
 

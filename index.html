@@ -14,7 +14,7 @@
 </head>
 
 <body>
-    <section id="loginpage" style="display: none;">
+    <section id="loginpage" >
         <div class="loginpage-container">
             <div class="loginpage-head">
                 SKKU ATM
@@ -236,7 +236,7 @@
         </div>
     </section>
 
-    <section id="transferpage">
+    <section id="transferpage" style="display: none;">
         <div class="transferpage-container">
             <div class="transferpage-left">
                 <div class="transferpage-left-text">
@@ -245,15 +245,10 @@
                 <div class="dropdown">
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2_left" data-bs-toggle="dropdown"
                         aria-expanded="false">
-                        Dropdown button
+                        Choose an Account
                     </button>
                     <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2" id="fromid">
-                        <li><a class="dropdown-item active" href="#">Action</a></li>
-                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                        <li><a class="dropdown-item" href="#">Something else here</a></li>
-                        <li><a class="dropdown-item" href="#">123</a></li>
-                        <li><a class="dropdown-item" >456</a></li>
-                        <li><a class="dropdown-item" href="#">Separated link</a></li>
+                        
                     </ul>
                 </div>
             </div>
@@ -288,25 +283,16 @@
                 <div class="dropdown">
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2_right" data-bs-toggle="dropdown"
                         aria-expanded="false">
-                        Dropdown button
+                        Choose an Account
                     </button>
                     <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2" id="Toid">
-                        <li><a class="dropdown-item active" href="#">Action</a></li>
-                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                        <li><a class="dropdown-item" href="#">Something else here</a></li>
-                        <li><a class="dropdown-item" href="#">1234567812345678</a></li>
-                        <li><a class="dropdown-item" href="#">asdf</a></li>
-                        <li><a class="dropdown-item" href="#">123</a></li>
-                        <li><a class="dropdown-item" href="#">456</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" href="#">Separated link</a></li>
+                        
                     </ul>
                 </div>
             </div>
         </div>
-        <input type="button" value="+" onclick="addDropdownMenu();">
+        <!-- <input type="button" value="+" onclick="addDropdownMenu('fromid','str');">
+        <input type="button" value="-" onclick="removeTransferAccount();"> -->
         <div class="information-back" onclick="transTransferToWelcome();">
             Back
         </div>
