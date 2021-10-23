@@ -108,7 +108,7 @@ function newGetDate(){ //날짜문자열 형식은 자유로운 편
     let today = new Date();   
     let week = ['Sun', 'Mon', 'Tue', 'Wed', 'Thr', 'Fri', 'Sat'];
     let Month = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-    let dayOfWeek = week[today.getDate()]; 
+    let dayOfWeek = week[today.getDay()]; 
     let monthOfYear = Month[today.getMonth()];
     return dayOfWeek + ' ' + monthOfYear + ' ' + today.getDate() + ' ' + today.getFullYear() + ' ' + today.toLocaleTimeString('en-US') + ' GMT+0900 (Korean Standard Time)' ; 
 }
@@ -193,7 +193,7 @@ function transWithdrawquestionToWithdraw() {
 function transWithdrawquestionToWithdrawComplete() {
     withdrawQuestionPageLayer.style.display = 'none';
     withdrawCompletePageLayer.style.display = 'block';
-    updateInformation(0, withdrawInputVariable.value);
+    updateInformation(nowAccount,0, withdrawInputVariable.value);
     // accountDate[nowAccount].push(newGetDate());
     // accountFundOut[nowAccount].push(withdrawInputVariable.value);
     // accountFundIn[nowAccount].push(0);
@@ -265,17 +265,17 @@ function transMoneyintoATMToDepositComplete() {
     
     moneyintoATMPageLayer.style.display = 'none';
     depositCompletePageLayer.style.display = 'block';
-    updateInformation(depositValue.value,0);
+    updateInformation(nowAccount,depositValue.value,0);
     depositValue.value = "";
     
 }
-function updateInformation(fin,fout){
-    accountDate[nowAccount].push(newGetDate());
-    accountFundIn[nowAccount].push(fin);
-    accountFundOut[nowAccount].push(fout);
-    accountBalance[nowAccount] += parseFloat(fin);
-    accountBalance[nowAccount] -= parseFloat(fout);
-    accountRunningBalance[nowAccount].push(accountBalance[nowAccount]);
+function updateInformation(Id,fin,fout){
+    accountDate[Id].push(newGetDate());
+    accountFundIn[Id].push(fin);
+    accountFundOut[Id].push(fout);
+    accountBalance[Id] += parseFloat(fin);
+    accountBalance[Id] -= parseFloat(fout);
+    accountRunningBalance[Id].push(accountBalance[Id]);
 }
 function transDepositCompleteToWelcome() {
     
@@ -343,6 +343,11 @@ function transTransferToQuestion() {
         alert('Choose Account');
         return;
     }
+    let accountFromIdx =accountNumber.indexOf(transferAccountFrom);
+    if (transferValue.value > accountBalance[accountFromIdx]) {
+       alert('Lack of Balance');
+        return;
+    }
     transferPageLayer.style.display = 'none';
     transferQuestionPageLayer.style.display = 'block';
     transferQuestionValueSpan.innerHTML = transferValue.value;
@@ -357,12 +362,13 @@ function transQuestionToTransfer() {
 function transQuestionToComplete() {
     transferQuestionPageLayer.style.display = 'none';
     transferCompletePageLayer.style.display = 'block';
-    /*
-        To do :
-        Make Input value = "" 
-        information update
-
-    */
+    let accountFromIdx =accountNumber.indexOf(transferAccountFrom);
+    let accountToIdx = accountNumber.indexOf(transferAccountTo);
+    updateInformation(accountFromIdx, 0, transferValue.value);
+    updateInformation(accountToIdx, transferValue.value, 0);
+    transferValue.value = "";
+    document.getElementById('dropdownMenuButton2_right').innerHTML = "Choose an Account";
+    document.getElementById('dropdownMenuButton2_left').innerHTML = "Choose an Account";
 }
 function transCompleteToWelcome() {
     transferCompletePageLayer.style.display = 'none';
@@ -375,6 +381,29 @@ function transCompleteToTransfer() {
 function transCompleteToLogin() {
     transferCompletePageLayer.style.display = 'none';
     loginPageLayer.style.display = 'block';
+}
+function addDropdownMenu() {
+    // 1. 추가할 값을 input창에서 읽어온다
+  let addValue 
+    = "lee";
+  
+  // 2. 추가할 li element 생성
+  // 2-1. 추가할 li element 생성
+    let li = document.createElement("li");
+    let li_a = document.createElement('a');
+    li_a.className += "dropdown-item";
+    li_a.setAttribute('href', '#');
+  // 2-2. li에 id 속성 추가 
+//   li.setAttribute('id',addValue);
+  
+  // 2-3. li에 text node 추가 
+  let textNode = document.createTextNode(addValue);
+  li_a.appendChild(textNode);
+  
+  // 3. 생성된 li를 ol에 추가
+  document
+    .getElementById('fromid')
+    .appendChild(li_a);
 }
 
 

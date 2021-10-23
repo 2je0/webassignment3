@@ -14,7 +14,7 @@
 </head>
 
 <body>
-    <section id="loginpage" style="display: none;" >
+    <section id="loginpage" >
         <div class="loginpage-container">
             <div class="loginpage-head">
                 SKKU ATM
@@ -103,8 +103,8 @@
                 </tbody>
             
             </table>
-            <input type="button" value="+" onclick="addRow(0,100);">
-            <input type="button" value="-" onclick="rem();">
+            <!-- <input type="button" value="+" onclick="addRow(0,100);">
+            <input type="button" value="-" onclick="rem();"> -->
             <div class="information-back" onclick="transInfoToWelcome()">
                 Back
             </div>
@@ -236,7 +236,7 @@
         </div>
     </section>
 
-    <section id="transferpage" style="display: none;">
+    <section id="transferpage" style="display: none;" >
         <div class="transferpage-container">
             <div class="transferpage-left">
                 <div class="transferpage-left-text">
@@ -251,11 +251,8 @@
                         <li><a class="dropdown-item active" href="#">Action</a></li>
                         <li><a class="dropdown-item" href="#">Another action</a></li>
                         <li><a class="dropdown-item" href="#">Something else here</a></li>
-                        <li><a class="dropdown-item" href="#">1234567812345678</a></li>
-
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
+                        <li><a class="dropdown-item" href="#">123</a></li>
+                        <li><a class="dropdown-item" >456</a></li>
                         <li><a class="dropdown-item" href="#">Separated link</a></li>
                     </ul>
                 </div>
@@ -299,6 +296,8 @@
                         <li><a class="dropdown-item" href="#">Something else here</a></li>
                         <li><a class="dropdown-item" href="#">1234567812345678</a></li>
                         <li><a class="dropdown-item" href="#">asdf</a></li>
+                        <li><a class="dropdown-item" href="#">123</a></li>
+                        <li><a class="dropdown-item" href="#">456</a></li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>
@@ -307,7 +306,8 @@
                 </div>
             </div>
         </div>
-        <div class="information-back" onclick="transTransferToWelcome()">
+        <input type="button" value="+" onclick="addDropdownMenu();">
+        <div class="information-back" onclick="transTransferToWelcome();">
             Back
         </div>
     </section>
@@ -328,7 +328,7 @@
         </div>
     </section>
 
-    <section id="transfercompletepage" >
+    <section id="transfercompletepage" style="display: none;">
         <div class="withdrawcomplete-container">
             <div class="withdrawcomplete-head">Money has been transferred.</div>
             <img src="assets/checkmark.png" alt="" class="withdrawcomplete-image">
