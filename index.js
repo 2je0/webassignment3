@@ -1,5 +1,4 @@
-
-
+$('input').prop('readonly', true);
 
 let loginPageLayer = document.getElementById('loginpage');
 let pinPageLayer = document.getElementById('pinpage');
@@ -245,9 +244,14 @@ function depositClick(num) {
 }
 function transdepositTodepositquestion() {
     if (depositValue.value == "") depositValue.value = '0';
+    if (numOfHotPoint(depositValue.value) > 1) {
+        alert('Please input Number');
+        return;
+    }
     depositQuestionSpan.innerHTML = depositValue.value;
     depositPageLayer.style.display = 'none';
     depositQuestionPageLayer.style.display = 'block';
+
 }
 function transdepositquestionTodeposit() {
     depositQuestionPageLayer.style.display = 'none';
@@ -374,6 +378,14 @@ function transTransferToQuestion() {
         alert('Choose Account');
         return;
     }
+    if (numOfHotPoint(transferValue.value) > 1) {
+        alert('Please input Number');
+        return;
+    }
+    if (transferValue.value = "") {
+        alert('Please input Number');
+        return;
+    }
     let accountFromIdx =accountNumber.indexOf(transferAccountFrom);
     if (transferValue.value > accountBalance[accountFromIdx]) {
        alert('Lack of Balance');
@@ -427,6 +439,19 @@ function addDropdownMenu(where,str) {
     document.getElementById(where).appendChild(li);  
 }
 
+function numOfHotPoint(str) {
+    var text = str;
+    var count = 0;
+    var searchChar = '.'; // 찾으려는 문자
+    var pos = text.indexOf(searchChar); //pos는 0의 값을 가집니다.
+
+    while (pos !== -1) {
+    count++;
+    pos = text.indexOf(searchChar, pos + 1); // 첫 번째 a 이후의 인덱스부터 a를 찾습니다.
+    }
+
+    return count; // 로그에 14를 출력합니다.
+}
 
 //To do : when complete transfer, change transferAccont ""
 //value = 0
