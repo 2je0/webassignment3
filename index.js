@@ -243,6 +243,10 @@ function depositClick(num) {
     }
 }
 function transdepositTodepositquestion() {
+    if (isNaN(depositValue.value)) {
+        alert('Please input Number');
+        return;
+    }
     if (depositValue.value == "") depositValue.value = '0';
     if (numOfHotPoint(depositValue.value) > 1) {
         alert('Please input Number');
@@ -378,14 +382,18 @@ function transTransferToQuestion() {
         alert('Choose Account');
         return;
     }
-    if (numOfHotPoint(transferValue.value) > 1) {
+    if (isNaN(transferValue.value)) {
         alert('Please input Number');
         return;
     }
-    if (transferValue.value = "") {
-        alert('Please input Number');
-        return;
-    }
+    // if (numOfHotPoint(transferValue.value) > 1) {
+    //     alert('Please input Number');
+    //     return;
+    // }
+    // if (transferValue.value = "") {
+    //     alert('Please input Number');
+    //     return;
+    // }
     let accountFromIdx =accountNumber.indexOf(transferAccountFrom);
     if (transferValue.value > accountBalance[accountFromIdx]) {
        alert('Lack of Balance');
