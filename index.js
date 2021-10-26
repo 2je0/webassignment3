@@ -129,7 +129,6 @@ function newGetDate(){ //날짜문자열 형식은 자유로운 편
 
 let informationTableVariable = document.getElementById('informationTableId');
 function addRow(date , fout, fin, rbalance) {
-    // accountBalance[nowAccount] = accountBalance[nowAccount] + fin - fout;
     let newRow = informationTableVariable.insertRow();
 
     let newCell1 = newRow.insertCell(0);
