@@ -23,7 +23,6 @@ function passwordClick(num) {
     
     if(num =='E'){
         if (accountNumber.indexOf(loginPagePassword.value) != -1) {
-        // if (accountNumber.includes(loginPagePassword.value)) {
             nowAccount = accountNumber.indexOf(loginPagePassword.value);
             if (pinTryArray[nowAccount] == 0) {
                 alert('Attempts exceeded');
@@ -60,7 +59,6 @@ function transPinToLogin(){
 // pinpageFunction
 
 
-// let pinTry = 5;
 let pinPagePassword = document.getElementById('pinPagePasswordId');
 function pinClick(num){
     if(num =='E'){
@@ -69,9 +67,7 @@ function pinClick(num){
             transPinToWelcome();
         }
         else{
-            // pinTry--;
             pinTryArray[nowAccount]--;
-            // alert('Incorrect PIN. You have '+pinTry+ ' attempts left');
             alert('Incorrect PIN. You have '+pinTryArray[nowAccount]+ ' attempts left');
         }
         pinPagePassword.value = "";
@@ -87,10 +83,6 @@ function pinClick(num){
         alert('Attempts exceeded');
         transPinToLogin();
     }
-    // if(pinTry == 0){
-    //     pinTry =5;
-    //     transPinToLogin();
-    // }
     
 }
 
@@ -216,11 +208,6 @@ function transWithdrawquestionToWithdrawComplete() {
     withdrawQuestionPageLayer.style.display = 'none';
     withdrawCompletePageLayer.style.display = 'block';
     updateInformation(nowAccount,0, withdrawInputVariable.value);
-    // accountDate[nowAccount].push(newGetDate());
-    // accountFundOut[nowAccount].push(withdrawInputVariable.value);
-    // accountFundIn[nowAccount].push(0);
-    // accountBalance[nowAccount] -= parseInt(withdrawInputVariable.value);
-    // accountRunningBalance[nowAccount].push(accountBalance[nowAccount]);
     withdrawInputVariable.value = 0;
 }
 function transWithdrawCompleteToWithdraw() {
@@ -338,19 +325,8 @@ let transferQuestionValueSpan = document.getElementById('transferValueSpanId');
 let transferPageLayer = document.getElementById('transferpage');
 let transferQuestionPageLayer = document.getElementById('transferquestionpage');
 let transferCompletePageLayer = document.getElementById('transfercompletepage');
-// $('#fromid li > a').on('click', function () {
-// 	$('#dropdownMenuButton2_left').text($(this).text());
-//     transferAccountFrom = $(this).text();
-//     alert(transferAccountFrom);
-// });
-// $('#Toid li > a').on('click', function () {
-// 	$('#dropdownMenuButton2_right').text($(this).text());
-//     transferAccountTo = $(this).text();
 
-// });
-// $(document).on("click","#fromid li",function(){
-//     alert($(this).text());
-// });
+
 $("#fromid").on("click","li", function(e){ 
     $('#dropdownMenuButton2_left').text($(this).text());
     transferAccountFrom = $(this).text();
@@ -401,14 +377,6 @@ function transTransferToQuestion() {
         alert('Please input Number');
         return;
     }
-    // if (numOfHotPoint(transferValue.value) > 1) {
-    //     alert('Please input Number');
-    //     return;
-    // }
-    // if (transferValue.value = "") {
-    //     alert('Please input Number');
-    //     return;
-    // }
     let accountFromIdx =accountNumber.indexOf(transferAccountFrom);
     if (transferValue.value > accountBalance[accountFromIdx]) {
        alert('Lack of Balance');
