@@ -5,7 +5,8 @@ let pinPageLayer = document.getElementById('pinpage');
 // loginpageFunction
 let accountNumber = ["123", "456","789","6742","1234567812345678","1234567890123456"];
 let pinNumber = ["123", "456","789","6742","0000","1234"];
-let accountBalance = [2000, 1000,0,0,0,2000];
+let accountBalance = [2000, 1000, 0, 0, 0, 2000];
+let pinTryArray = [5, 5, 5, 5, 5, 5];
 let accountDate = new Array(accountNumber.length);
 let accountFundOut = new Array(accountNumber.length);
 let accountFundIn = new Array(accountNumber.length);
@@ -18,11 +19,18 @@ for(var i =0; i < accountDate.length; i++){
 }
 let nowAccount;
 let loginPagePassword = document.getElementById('loginPagePasswordId');
-function passwordClick(num){
+function passwordClick(num) {
+    
     if(num =='E'){
-        if (accountNumber.includes(loginPagePassword.value)) {
+        if (accountNumber.indexOf(loginPagePassword.value) != -1) {
+        // if (accountNumber.includes(loginPagePassword.value)) {
             nowAccount = accountNumber.indexOf(loginPagePassword.value);
-            transLoginToPin();
+            if (pinTryArray[nowAccount] == 0) {
+                alert('Attempts exceeded');
+                return;
+            }
+            else
+                transLoginToPin();
         }
         else{
             alert('That account number does not exist!');
@@ -52,16 +60,19 @@ function transPinToLogin(){
 // pinpageFunction
 
 
-let pinTry = 5;
+// let pinTry = 5;
 let pinPagePassword = document.getElementById('pinPagePasswordId');
 function pinClick(num){
     if(num =='E'){
-        if(pinNumber.includes(pinPagePassword.value)){
+        if (pinNumber[nowAccount] == pinPagePassword.value) {
+            pinTryArray[nowAccount] = 5;
             transPinToWelcome();
         }
         else{
-            pinTry--;
-            alert('Incorrect PIN. You have '+pinTry+ ' attempts left');
+            // pinTry--;
+            pinTryArray[nowAccount]--;
+            // alert('Incorrect PIN. You have '+pinTry+ ' attempts left');
+            alert('Incorrect PIN. You have '+pinTryArray[nowAccount]+ ' attempts left');
         }
         pinPagePassword.value = "";
         
@@ -72,10 +83,14 @@ function pinClick(num){
     else{
         pinPagePassword.value = pinPagePassword.value + num;
     }
-    if(pinTry ==0){
-        pinTry =5;
+    if (pinTryArray[nowAccount] == 0) {
+        alert('Attempts exceeded');
         transPinToLogin();
     }
+    // if(pinTry == 0){
+    //     pinTry =5;
+    //     transPinToLogin();
+    // }
     
 }
 
