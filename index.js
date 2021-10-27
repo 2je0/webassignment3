@@ -95,7 +95,6 @@ function transPinToWelcome() {
         addDropdownMenu('Toid', accountNumber[i]);
     }
 
-
 }
 // pinpageFunction
 
@@ -165,6 +164,7 @@ let withdrawPageLayer = document.getElementById('withdrawpage')
 
 let withdrawInputVariable = document.getElementById('withdrawInputId');
 let arrowLayer = document.getElementById('withdrawArrowId');
+
 function withdrawUpdate(num) {
     if(parseInt(num) > accountBalance[nowAccount]) alert('Lack of Balance');
     else withdrawInputVariable.value = num;
@@ -244,12 +244,7 @@ function depositClick(num) {
     }
 }
 function transdepositTodepositquestion() {
-    if (isNaN(depositValue.value)) {
-        alert('Please input Number');
-        return;
-    }
-    if (depositValue.value == "") depositValue.value = '0';
-    if (numOfHotPoint(depositValue.value) > 1) {
+    if (isNaN(depositValue.value) ||depositValue.value == "") {
         alert('Please input Number');
         return;
     }
@@ -341,14 +336,16 @@ function removeTransferAccount() {
     let listToItem = listTo.getElementsByTagName('li');
     while (listFromItem.length > 0) listFromItem[0].remove();
     while (listToItem.length > 0) listToItem[0].remove();
+    document.getElementById('dropdownMenuButton2_right').innerHTML = "Choose an Account";
+    document.getElementById('dropdownMenuButton2_left').innerHTML = "Choose an Account";
+    transferAccountFrom = ""
+    transferAccountTo = ""
 }
 
 
 
 function transferClick(num) {
     if (num == 'E') {
-        if (transferValue.value == "")
-            transferValue.value = 0;
         transTransferToQuestion();
     }
     else if (num == 'D'){
@@ -372,7 +369,7 @@ function transTransferToQuestion() {
         alert('Choose Account');
         return;
     }
-    if (isNaN(transferValue.value)) {
+    if (isNaN(transferValue.value) || transferValue.value == "") {
         alert('Please input Number');
         return;
     }
