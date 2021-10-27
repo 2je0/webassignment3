@@ -1,8 +1,10 @@
 $('input').prop('readonly', true);
-
+//This code is a code that deactivates all input boxes.
+//All functions starting with 'trans' are necessary to move the page.
 let loginPageLayer = document.getElementById('loginpage');
 let pinPageLayer = document.getElementById('pinpage');
 // loginpageFunction
+//This code is a code that stores information on accounts.
 let accountNumber = ["123", "456","789","6742","1234567812345678","1234567890123456"];
 let pinNumber = ["123", "456","789","6742","0000","1234"];
 let accountBalance = [2000, 1000, 0, 0, 0, 2000];
@@ -11,6 +13,7 @@ let accountDate = new Array(accountNumber.length);
 let accountFundOut = new Array(accountNumber.length);
 let accountFundIn = new Array(accountNumber.length);
 let accountRunningBalance = new Array(accountNumber.length);
+//This code is a code that allocates an array of information on accounts.
 for(var i =0; i < accountDate.length; i++){
 	accountDate[i] = new Array();
 	accountFundOut[i] = new Array();
@@ -19,17 +22,18 @@ for(var i =0; i < accountDate.length; i++){
 }
 let nowAccount;
 let loginPagePassword = document.getElementById('loginPagePasswordId');
-function passwordClick(num) {
+
+function passwordClick(num) { //This code goes from the login page to the page where you enter the pin.
     
     if(num =='E'){
-        if (accountNumber.indexOf(loginPagePassword.value) != -1) {
-            nowAccount = accountNumber.indexOf(loginPagePassword.value);
-            if (pinTryArray[nowAccount] == 0) {
+        if (accountNumber.indexOf(loginPagePassword.value) != -1) { //This code is to find if you have a saved account.
+            nowAccount = accountNumber.indexOf(loginPagePassword.value); // This code stores the index of the current account.
+            if (pinTryArray[nowAccount] == 0) { // If the number of attempts exceeds, you cannot log in.
                 alert('Attempts exceeded');
                 return;
             }
             else
-                transLoginToPin();
+                transLoginToPin(); // This code is the code that goes to the next page.
         }
         else{
             alert('That account number does not exist!');
@@ -62,7 +66,7 @@ function transPinToLogin(){
 let pinPagePassword = document.getElementById('pinPagePasswordId');
 function pinClick(num){
     if(num =='E'){
-        if (pinNumber[nowAccount] == pinPagePassword.value) {
+        if (pinNumber[nowAccount] == pinPagePassword.value) { // This code compares the pin numbers of the current account.
             pinTryArray[nowAccount] = 5;
             transPinToWelcome();
         }
@@ -90,7 +94,7 @@ function transPinToWelcome() {
     pinPageLayer.style.display = 'none';
     welcomePageLayer.style.display = 'block';
     addDropdownMenu('fromid', accountNumber[nowAccount]);
-    for (let i = 0; i < accountNumber.length; i++){
+    for (let i = 0; i < accountNumber.length; i++){ //This code activates the drop-down menu on the transfer page when login is successful.
         if (i == nowAccount) continue;
         addDropdownMenu('Toid', accountNumber[i]);
     }
@@ -104,7 +108,7 @@ function transWelcomeToInfo() {
     welcomePageLayer.style.display = 'none';
     informationPageLayer.style.display = 'block';
     document.getElementById('balanceId').innerHTML = accountBalance[nowAccount];
-    for (let i = 0; i < accountDate[nowAccount].length; i++){
+    for (let i = 0; i < accountDate[nowAccount].length; i++){ // This code activates the drop-down menu on the information page transfer page.
         addRow(accountDate[nowAccount][i], accountFundOut[nowAccount][i], accountFundIn[nowAccount][i], accountRunningBalance[nowAccount][i]);
     }
 
@@ -118,7 +122,7 @@ function transWelcomToLogin() {
 
 // informationpageFunction
 function newGetDate(){ //날짜문자열 형식은 자유로운 편 
-    let today = new Date();   
+    let today = new Date();   //This code stores information at the current time.
     let week = ['Sun', 'Mon', 'Tue', 'Wed', 'Thr', 'Fri', 'Sat'];
     let Month = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
     let dayOfWeek = week[today.getDay()]; 
@@ -149,7 +153,7 @@ function transInfoToWelcome() {
     rem();
 
 }
-function rem() {
+function rem() { // This code deletes transaction details when leaving the information page.
     while (informationTableVariable.rows.length > 1) {
         informationTableVariable.deleteRow(informationTableVariable.rows.length - 1);
     }
@@ -165,11 +169,11 @@ let withdrawPageLayer = document.getElementById('withdrawpage')
 let withdrawInputVariable = document.getElementById('withdrawInputId');
 let arrowLayer = document.getElementById('withdrawArrowId');
 
-function withdrawUpdate(num) {
+function withdrawUpdate(num) { // This code is a code that inserts a string into the inputbox.
     if(parseInt(num) > accountBalance[nowAccount]) alert('Lack of Balance');
     else withdrawInputVariable.value = num;
 }
-function withdrawPlus(num) {
+function withdrawPlus(num) { // This code is a code that controls several impossible situations.
     let sum = parseInt(withdrawInputVariable.value) + parseInt(num);
     if (sum > 300) alert('$300 is the limit to withdraw from the ATM');
     else if (sum < 0) alert('$0 is the limit to withdraw from the ATM');
@@ -243,7 +247,7 @@ function depositClick(num) {
         depositValue.value = depositValue.value + num;
     }
 }
-function transdepositTodepositquestion() {
+function transdepositTodepositquestion() { // This code is a code that controls several impossible situations.
     if (isNaN(depositValue.value) ||depositValue.value == "") {
         alert('Please input Number');
         return;
@@ -282,7 +286,7 @@ function transMoneyintoATMToDepositComplete() {
     depositValue.value = "";
     
 }
-function updateInformation(Id,fin,fout){
+function updateInformation(Id,fin,fout){ // This code allows transaction details to be stored in an array to enter information to be retrieved from information.
     accountDate[Id].push(newGetDate());
     accountFundIn[Id].push(fin);
     accountFundOut[Id].push(fout);
@@ -321,7 +325,7 @@ let transferQuestionPageLayer = document.getElementById('transferquestionpage');
 let transferCompletePageLayer = document.getElementById('transfercompletepage');
 
 
-$("#fromid").on("click","li", function(e){ 
+$("#fromid").on("click","li", function(e){  // This code is the code that replaces the string at the top of the drop-down menu with the ID of the account.
     $('#dropdownMenuButton2_left').text($(this).text());
     transferAccountFrom = $(this).text();
 });
@@ -329,7 +333,7 @@ $("#Toid").on("click","li", function(e){
     $('#dropdownMenuButton2_right').text($(this).text());
     transferAccountTo = $(this).text();
 });
-function removeTransferAccount() {
+function removeTransferAccount() { // This code initializes the drop-down menu on the transfer page when logging out of the account.
     let listFrom = document.getElementById('fromid');
     let listTo = document.getElementById('Toid');
     let listFromItem = listFrom.getElementsByTagName('li');
@@ -364,7 +368,7 @@ function transWelcomeToTransfer() {
     transferPageLayer.style.display = 'block';
 }
 
-function transTransferToQuestion() {
+function transTransferToQuestion() { //  This code is a code that controls several impossible situations
     if (transferAccountFrom == "" || transferAccountTo == "") {
         alert('Choose Account');
         return;
@@ -415,7 +419,7 @@ function transCompleteToLogin() {
     loginPageLayer.style.display = 'block';
     removeTransferAccount();
 }
-function addDropdownMenu(where,str) {
+function addDropdownMenu(where,str) { // This code is a function code that helps you activate the drop-down menu.
     let li_a = document.createElement('a');
     li_a.setAttribute('href', '#');
     li_a.className += "dropdown-item";
